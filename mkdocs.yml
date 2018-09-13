@@ -1,0 +1,12 @@
+site_name: GamGam
+site_description: Its all about a Weissman score > 5.0
+repo_url: https://github.com/min-ki/GamGam
+site_dir: site
+copyright: Copyright &copy; 2018, <a href="https://github.com/min-ki">min-ki</a>.
+dev_addr: 0.0.0.0:8001
+
+pages:
+  - Home: 'index.md'
+  - API:
+    - Authentication: 'api/authentication.md'
+    - Users: 'api/users.md'
