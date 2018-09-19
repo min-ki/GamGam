@@ -13,18 +13,27 @@ class Common(Configuration):
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
+        'django.contrib.sites',
         'django.contrib.messages',
         'django.contrib.staticfiles',
 
-
         # Third party apps
+        'allauth',  # registration
+        'allauth.account',  # registration
+        'allauth.socialaccount',  # registration
+        'allauth.socialaccount.providers.facebook',
         'rest_framework',            # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
+        'rest_framework_swagger',    # API doc
+        'rest_framework_jwt',
+        'rest_auth',  # rest auth
+        'rest_auth.registration',
         'django_filters',            # for filtering rest endpoints
 
         # Your apps
         'GamGam.users',
-
+        'GamGam.travel',
+        
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -195,7 +204,24 @@ class Common(Configuration):
             'rest_framework.permissions.IsAuthenticated',
         ],
         'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework.authentication.SessionAuthentication',
-            'rest_framework.authentication.TokenAuthentication',
+            'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         )
     }
+
+    REST_USE_JWT = True
+
+    JWT_ATH = {
+        'JWT_VERIY_EXPIRATION': False
+    }
+    CORS_ORIGIN_ALLOW_ALL = True
+    SITE_ID = 1
+
+
+    ACCOUNT_AUTHENTICATION_METHOD = 'username'
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_EMAIL_VERIFICATION = 'optional'  # 'mandatory'
+
+    ACCOUNT_ALLOW_REGISTRATION = os.getenv('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
+    ACCOUNT_ADAPTER = 'GamGam.users.adapters.AccountAdapter'
+    SOCIALACCOUNT_ADAPTER = 'GamGam.users.adapters.SocialAccountAdapter'
+    
