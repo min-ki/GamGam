@@ -1,0 +1,73 @@
+.feed-photo {
+  @include boxBorder(yes);
+  // width: 32%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: $max-card-width;
+  margin: 30px;
+  flex:1 1 auto;
+
+  @include breakpoint("phone") {
+    background-color: transparent;
+    border: 0;
+    margin-bottom: 30px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .detail-link {
+    text-decoration: none;
+
+    &:active, &:after, &:visited {
+      color: black;
+    }
+
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $border-color;
+
+    .feed-image {
+      // border: 1px solid red;
+    }
+
+    .travel-meta {
+      // border: 1px solid green;
+      padding: 10px;
+      
+      .title {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 1.2em;
+      }
+
+      .tag {
+        font-weight: bold;
+      }
+    }
+
+    .image {
+      width: 30px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .header-column {
+      display: flex;
+      flex-direction: column;
+
+      .creator {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .location {
+        font-size: $small-font-size;
+      }
+    }
+  }
+
+}

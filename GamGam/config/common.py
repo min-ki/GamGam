@@ -24,12 +24,13 @@ class Common(Configuration):
         'allauth.socialaccount.providers.facebook',
         'rest_framework',            # utilities for rest apis
         'rest_framework.authtoken',  # token authentication
-        'rest_framework_swagger',    # API doc
         'rest_framework_jwt',
         'rest_auth',  # rest auth
         'rest_auth.registration',
         'django_filters',            # for filtering rest endpoints
-
+        'taggit',  # Tags for the photos
+        'taggit_serializer',  # tag
+        
         # Your apps
         'GamGam.users',
         'GamGam.travel',
@@ -210,8 +211,8 @@ class Common(Configuration):
 
     REST_USE_JWT = True
 
-    JWT_ATH = {
-        'JWT_VERIY_EXPIRATION': False
+    JWT_AUTH = {
+        'JWT_VERIFY_EXPIRATION': False
     }
     CORS_ORIGIN_ALLOW_ALL = True
     SITE_ID = 1
@@ -224,4 +225,3 @@ class Common(Configuration):
     ACCOUNT_ALLOW_REGISTRATION = os.getenv('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
     ACCOUNT_ADAPTER = 'GamGam.users.adapters.AccountAdapter'
     SOCIALACCOUNT_ADAPTER = 'GamGam.users.adapters.SocialAccountAdapter'
-    

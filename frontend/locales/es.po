@@ -1,0 +1,106 @@
+msgid ""
+msgstr ""
+"Language: es"
+
+#: src/components/Auth/presenter.js
+msgid "Don't have an account?"
+msgstr ""
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Sign up"
+msgstr ""
+
+#: src/components/Auth/presenter.js
+msgid "Have an account?"
+msgstr "Ya tienes una cuenta?"
+
+#: src/components/Auth/presenter.js
+#: src/components/AuthForms/index.js
+msgid "Log in"
+msgstr "Inciar Sesiom"
+
+#: src/components/Auth/presenter.js
+msgid "Get the app"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Username"
+msgstr "Usuario"
+
+#: src/components/AuthForms/index.js
+msgid "Password"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "or"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Log in with Facebook"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Forgot password?"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Sign up to see photos and videos from your friends."
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Email"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Full Name"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "By signing up, you agree to our"
+msgstr ""
+
+#: src/components/AuthForms/index.js
+msgid "Terms & Privacy Policy"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "About us"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Support"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Blog"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Press"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Jobs"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Privacy"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Terms"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Directory"
+msgstr ""
+
+#: src/components/Footer/index.js
+msgid "Language"
+msgstr ""
+

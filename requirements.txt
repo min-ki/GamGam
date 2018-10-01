@@ -44,3 +44,11 @@ djangorestframework-jwt
 
 # Swagger
 django-rest-swagger
+drf-yasg
+
+# Pillow
+pillow
+
+# tag
+django-taggit
+django-taggit-serializer

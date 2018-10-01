@@ -1,0 +1,47 @@
+.detail-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .detail-card {
+        @include boxBorder(yes);
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        align-items: center;
+        justify-content: center;
+
+        .card-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .detail-image {
+                width: 100%;
+            }
+
+            .detail-title {
+                text-align: center;
+                border-bottom: 1px solid green;
+                width: 100%;
+                font-size: 1.3em;
+                padding: 10px;
+            }
+        }
+
+        .detail-card, .detail-status, .detail-price {
+            padding: 10px;
+        }
+
+        .detail-content {}
+        .detail-status {
+            font-size: 1.2em;
+            align-self: flex-end;
+        }
+        .detail-price {
+            align-self: flex-end;
+        }
+    }
+
+}
