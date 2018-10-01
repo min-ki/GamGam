@@ -13,7 +13,6 @@ const TimeLine = props => {
 
 const MapToTimeline = props => (
     <div>
-        <h1>Time Line</h1>
         {props.feed.map(travel => <RenderTimeLine {...travel} key={travel.id} />)}
     </div>
 );
