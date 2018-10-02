@@ -16,6 +16,7 @@
     }
 
     .column2 {
+        padding-left: 2.5rem;
         width: 30%;
         @include breakpoint("phone") {
             &:first-child {
