@@ -28,6 +28,13 @@ const Navigation = (props, context) => {
           <div className={styles.column}>
             <div className={styles.navIcon}>
               <Link to="/feed" className={styles.link}>
+                <span className={styles.menu}></span>
+                <span className={styles.menu}></span>
+                <span className={styles.menu}></span>
+              </Link>
+            </div>
+            <div className={styles.navIcon}>
+              <Link to="/feed" className={styles.link}>
                 둘러보기
               </Link>
             </div>
