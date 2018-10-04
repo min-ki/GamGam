@@ -38,7 +38,7 @@ class TravelListView(APIView):
         if serializer.is_valid():
             serializer.save(owner=user, status="1")
             return Response(data=serializer.data, status=201)
-
+            
 class TravelDetailView(APIView):
 
     def get(self, request, pk, format=None):

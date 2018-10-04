@@ -12,10 +12,17 @@ services:   # 이 섹션에서는 Docker Compose 인스턴스의 일부로 시�
     command: >    # 아래에 있는 명령어를 커맨드로 입력해줍니다.
       bash -c "python wait_for_postgres.py &&
                pip install -r requirements.txt &&
+<<<<<<< HEAD
                ./manage.py makemigrations &&
                ./manage.py migrate &&
                ./manage.py runserver 0.0.0.0:8000"
     volumes:     # 컨테이너 에서 사용할수 있는 호스트 시스템에 연결된 경로를 마운트합니다.
+=======
+               python manage.py makemigrations &&
+               python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8000"
+    volumes:
+>>>>>>> fe7d10c3e32678f90cb609124453cdc15eabbec0
       - ./:/code
     ports:    # 다음과 같은 방법으로 컨테이너의 포트를 호스트에 매핑합니다.
       - "8000:8000"

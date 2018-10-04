@@ -1,8 +1,74 @@
-@import 'rc-calendar/assets/index.css';
+@import 'react-day-picker/lib/style.css';
 
 .picker-box{
     display: flex;
     flex-direction: column;
     width: 300px;
     margin: 20px;
+}
+
+.plan-container {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    .plan-input {
+        width: 100%;
+        max-width: 600px;
+        // border: 1px solid red;
+        padding: 10px;
+        
+        .calendar-title {
+            font-size: 1.5em;
+            border-bottom: 1px solid black;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+        }
+
+        .calendar-range {
+            font-size: 1.1em;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+        
+        .planMaker-form {
+            .planMaker-formTitle {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .day-picker {
+        max-width: 300px;
+        // border: 1px solid blue;
+    }
+
+    .plan-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        .plan-content{
+            display: flex;
+            margin-bottom: 5px;
+            .plan-title {
+                margin-right: 5px;
+            }
+
+            .form-control {
+
+            }
+        }
+        
+        
+        .plan-add {
+            margin-top: 5px;
+            // margin-left: 5px;
+            text-align: center;
+        }
+
+        .plan-content, .plan-title {
+        }
+    }
 }
