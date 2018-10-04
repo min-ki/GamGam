@@ -29,7 +29,17 @@
           display: none;
         }
       }
+      //한성민 추가중//
+      &:nth-child(3){
+        @include breakpoint("phone") {
+          display: none;
+        }
 
+        @include breakpoint("tablet") {
+          display: none;
+        }
+      }
+      //
       &:first-child {
         justify-content: flex-start;
       }
@@ -71,6 +81,9 @@
         
           &:visited, &:active {
             color: black;
+          }
+          &:hover{
+            color: $light-blue;
           }
         }
       }

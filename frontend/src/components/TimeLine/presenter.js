@@ -22,6 +22,7 @@ const RenderTimeLine = props => (
         <Timeline>
         <Event interval={"2016 – 2018"} title={`${props.title}`} subtitle={"서브타이틀"}>
             <img className={styles.feedImage} src={props.main_image ? props.main_image : require("images/logo.png")} alt="temp" />
+            <br></br>
             여행 년도만 받아오기
             여행경비 : {props.price}
         </Event>

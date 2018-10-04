@@ -6,22 +6,22 @@ import { Col } from 'reactstrap';
 
 const FeedTravel = (props, context) => {
     return (
-        <Col md="3"> 
-            <div className={styles.feedPhoto}>
-                <Link to={`/feed/${props.id}`} className={styles.detailLink}>
-                    <header className={styles.header}>
-                        <FeedImage img={props.main_image} />
-                        <span className={styles.travelMeta}> 
-                            <h1 className={styles.title}>{props.title}</h1>
-                        </span>
-                        <span className={styles.travelMeta}>여행 상태 : {props.status}</span>
-                        <span className={styles.travelMeta}>
-                            {props.tags.map((tag, index) => (<span className={styles.tag} key={index}>{`#${tag}`}{" "}</span>))}
-                        </span>
-                    </header>
-                </Link>
-            </div>
-        </Col>
+            <Col lg="3" md="4" sm="6" xs="12"> 
+                <div className={styles.feedPhoto}>
+                    <Link to={`/feed/${props.id}`} className={styles.detailLink}>
+                        <header className={styles.header}>
+                            <FeedImage img={props.main_image} />
+                            <span className={styles.travelMeta}> 
+                                <h1 className={styles.title}>{props.title}</h1>
+                            </span>
+                            <span className={styles.travelMeta}>여행 상태 : {props.status}</span>
+                            <span className={styles.travelMeta}>
+                                {props.tags.map((tag, index) => (<span className={styles.tag} key={index}>{`#${tag}`}{" "}</span>))}
+                            </span>
+                        </header>
+                    </Link>
+                </div>
+            </Col>
     )
 };
 
