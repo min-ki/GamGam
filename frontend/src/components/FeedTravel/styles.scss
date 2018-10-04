@@ -1,15 +1,17 @@
+
 .feed-photo {
   @include boxBorder(yes);
   // width: 32%;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: $max-card-width;
+  max-width: 100%;//$max-card-width;
   margin: 30px;
   flex:1 1 auto;
 
+
   @include breakpoint("phone") {
     background-color: transparent;
-    border: 0;
+    border: 1px solid #e6e6e6;
     margin-bottom: 30px;
   }
 
@@ -29,15 +31,20 @@
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid $border-color;
-
+    
     .feed-image {
-      // border: 1px solid red;
+      //border: 1px solid red;
+      height: 400px;
     }
 
     .travel-meta {
-      // border: 1px solid green;
-      padding: 10px;
+      //border: 1px solid green;
+      padding: 10px 10px 0px 10px;
       text-overflow: ellipsis;
+
+      &:nth-child(2){
+        border-bottom: 1px solid #e6e6e6;;
+      }
       
       .title {
         padding-top: 5px;
