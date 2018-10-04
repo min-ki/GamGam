@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from GamGam.travel.serializers import TravelSerializer, UserProfileTravelSerializer
 from .models import User
-
+from GamGam.travel.models import Travel
 class UserListSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -40,3 +40,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
             if obj in request.user.following.all():
                 return True
         return False
+
+class UserPlanSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Travel
+        fields = '__all__'
