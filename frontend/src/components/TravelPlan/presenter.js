@@ -1,149 +1,186 @@
 import React, { Component } from 'react';
-import RangeCalendar from 'rc-calendar/lib/RangeCalendar';
-import DatePicker from 'rc-calendar/lib/Picker';
-import enUS from 'rc-calendar/lib/locale/en_US';
-import moment from 'moment';
-import 'moment/locale/en-gb';
-import 'rc-calendar/assets/index.css';
 import styles from './styles.scss';
-
-const format = 'YYYY-MM-DD';
-
-const fullFormat = 'YYYY-MM-DD dddd';
-
-const now = moment();
-
-now.locale('en-gb').utcOffset(0);
+import DayPicker, {
+  DateUtils
+} from 'react-day-picker';
+import Helmet from 'react-helmet';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class TravelPlan extends Component {
   
-  state = {
-    startValue: null,
-    endValue: null,
-    startOpen: false,
-    endOpen: false,
+  static defaultProps = {
+    numberOfMonths: 2,
   };
 
-  onStartOpenChange = (startOpen) => {
-    this.setState({
-      startOpen,
-    });
+  constructor(props) {
+    super(props);
+    this.handleDayClick = this.handleDayClick.bind(this);
+    this.handleResetClick = this.handleResetClick.bind(this);
+    this.state = this.getInitialState();
   }
 
-  onEndOpenChange = (endOpen) => {
-    this.setState({
-      endOpen,
-    });
+  getInitialState() {
+    return {
+      from: undefined,
+      to: undefined,
+    };
   }
 
-  onStartChange = (value) => {
-    this.setState({
-      startValue: value[0],
-      startOpen: false,
-      endOpen: true,
-    });
+  handleDayClick(day) {
+    const range = DateUtils.addDayToRange(day, this.state);
+    this.setState(range);
   }
 
-  onEndChange = (value) => {
-    this.setState({
-      endValue: value[1],
-    });
-  }
-
-  disabledStartDate = (endValue) => {
-    if (!endValue) {
-      return false;
-    }
-    const startValue = this.state.startValue;
-    if (!startValue) {
-      return false;
-    }
-    return endValue.diff(startValue, 'days') < 0;
+  handleResetClick() {
+    this.setState(this.getInitialState());
   }
 
   render() {
-    const state = this.state;
-    return (
-      <div className={styles.pickerBox}>
-        <div>
-          여행 계획 제목 
-        </div>
-        <div>
-          시작일자:
-          <Picker
-            onOpenChange={this.onStartOpenChange}
-            type="start"
-            showValue={state.startValue}
-            open={this.state.startOpen}
-            value={[state.startValue, state.endValue]}
-            onChange={this.onStartChange}
-          />
-        </div>
+    const { from, to } = this.state;
+    const modifiers = { start: from, end: to };
 
-        <p>
-          종료일자:
-          <Picker
-            onOpenChange={this.onEndOpenChange}
-            open={this.state.endOpen}
-            type="end"
-            showValue={state.endValue}
-            disabledDate={this.disabledStartDate}
-            value={[state.startValue, state.endValue]}
-            onChange={this.onEndChange}
+    return (
+      <div className={styles.planContainer}>
+        <div className={styles.planInput}>
+          <h1 className={styles.calendarTitle}>여행 일정</h1>
+          <p className={styles.calendarRange}>
+            {!from && !to && '첫 여행일자를 선택해 주세요.'}
+            {from && !to && '마지막 여행일자를 선택해 주세요.'}
+            {from &&
+              to &&
+              `${from.toLocaleDateString()} 부터
+                  ${to.toLocaleDateString()}`}{' '}
+            {from &&
+              to && (
+                <button className="link" onClick={this.handleResetClick}>
+                  Reset
+                </button>
+              )}
+          </p>
+          <PlanMaker />
+        </div>
+        <div className={styles.dayPicker}>
+          <DayPicker
+            className="Selectable"
+            numberOfMonths={this.props.numberOfMonths}
+            selectedDays={[from, { from, to }]}
+            modifiers={modifiers}
+            onDayClick={this.handleDayClick}
           />
-        </p>
+          <Helmet>
+            <style>
+              {`
+                .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+                  background-color: #f0f8ff !important;
+                  color: #4a90e2;
+                }
+                .Selectable .DayPicker-Day {
+                  border-radius: 0 !important;
+                }
+                .Selectable .DayPicker-Day--start {
+                  border-top-left-radius: 50% !important;
+                  border-bottom-left-radius: 50% !important;
+                }
+                .Selectable .DayPicker-Day--end {
+                  border-top-right-radius: 50% !important;
+                  border-bottom-right-radius: 50% !important;
+                }
+              `}
+            </style>
+          </Helmet>
+        </div>
       </div>
     );
   }
 }
 
-class Picker extends Component {
-  
-  state = {
-    hoverValue: [],
-  };
 
-  onHoverChange = (hoverValue) => {
-    console.log(hoverValue);
-    this.setState({ hoverValue });
+const PlanMaker = props => (
+  <div>
+    <h1 className={styles.calendarTitle}>계획 하기</h1>
+    <Form className={"planMaker-form"}>
+      <FormGroup className={"planMaker-formTitle"}>
+        <Input type="text" name="title" placeholder="여행의 주제를 적어주세요."/>
+      </FormGroup>
+
+      <FormGroup>
+        <IncorporationForm />
+      </FormGroup>
+      
+      {/* <FormGroup>
+        <Label for="exampleText">Text Area</Label>
+        <Input type="textarea" name="text" id="exampleText" />
+      </FormGroup> */}
+
+      {/* <FormGroup>
+        <Label for="exampleFile">여행 계획 업로드</Label>
+        <Input type="file" name="file" id="exampleFile" />
+      </FormGroup> */}
+
+      {/* <Button>Submit</Button> */}
+    </Form>
+  </div>
+);
+
+class IncorporationForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      shareholders: [{ name: '' }],
+    };
+  }
+
+  // ...
+
+  handleShareholderNameChange = (idx) => (evt) => {
+    const newShareholders = this.state.shareholders.map((shareholder, sidx) => {
+      if (idx !== sidx) return shareholder;
+      return { ...shareholder, name: evt.target.value };
+    });
+
+    this.setState({ shareholders: newShareholders });
+  }
+
+  handleSubmit = (evt) => {
+    const { name, shareholders } = this.state;
+    alert(`Incorporated: ${name} with ${shareholders.length} shareholders`);
+  }
+
+  handleAddShareholder = () => {
+    this.setState({
+      shareholders: this.state.shareholders.concat([{ name: '' }])
+    });
+  }
+
+  handleRemoveShareholder = (idx) => () => {
+    this.setState({
+      shareholders: this.state.shareholders.filter((s, sidx) => idx !== sidx)
+    });
   }
 
   render() {
-    const props = this.props;
-    const { showValue } = props;
-    const calendar = (
-      <RangeCalendar
-        hoverValue={this.state.hoverValue}
-        onHoverChange={this.onHoverChange}
-        type={this.props.type}
-        locale={enUS}
-        defaultValue={now}
-        format={format}
-        onChange={props.onChange}
-        disabledDate={props.disabledDate}
-      />);
     return (
-      <DatePicker
-        open={this.props.open}
-        onOpenChange={this.props.onOpenChange}
-        calendar={calendar}
-        value={props.value}
-      >
-        {
-          () => {
-            return (
-              <span>
-                <input
-                  placeholder="Date"
-                  style={{ width: 250 }}
-                  readOnly
-                  value={showValue && showValue.format(fullFormat) || ''}
-                />
-                </span>
-            );
-          }
-        }
-      </DatePicker>);
+      <div>
+        <h1 className={styles.calendarTitle}>세부 여행 계획</h1>
+        <form className={"plan-form"} onSubmit={this.handleSubmit}>
+          {this.state.shareholders.map((shareholder, idx) => (
+            <div className={styles.planContent}>
+              <Input
+                type="text"
+                placeholder={`여행 계획 #${idx + 1}`}
+                value={shareholder.name}
+                onChange={this.handleShareholderNameChange(idx)}
+                className={"plan-title"}
+              />
+              <Button type="button" onClick={this.handleRemoveShareholder(idx)} className={"plan-delete"}>X</Button>
+            </div>
+          ))}
+          <Button type="button" onClick={this.handleAddShareholder} className={"plan-add"}>추가</Button>
+          {/* <button>Incorporate</button> */}
+        </form>
+      </div>
+    )
   }
 }
 
