@@ -2,6 +2,24 @@
     display: flex;
     flex-basis : 600px;
     flex-direction: column;
-    //justify-content: center;
+   // justify-content: center;
     
+    .button{
+        width: 80px;
+        text-align: center;
+        float: right;        
+        display: inline-block;
+        border: 1px solid $light-blue;
+        border-radius: 15px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        background-color: $light-blue;
+    }
+    .button:hover{
+        background-color: white;
+        color: $light-blue;
+        border: 1px solid #e6e6e6;
+    }
 }

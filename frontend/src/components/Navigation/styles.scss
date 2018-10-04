@@ -24,22 +24,38 @@
       align-items: center;
       width: 33%;
 
+      .search{
+        border: 1px solid #dbdbdb;
+        background-color: #fafafa;
+        border-radius: 3px;
+        padding: 5px;
+      }
+      .nav-container {
+        display: flex;
+        @include breakpoint("phone") {
+          display: none;
+        }
+        @include breakpoint("tablet") {
+          display: none;
+        }
+      }
+
       &:nth-child(2) {
         @include breakpoint("phone") {
           display: none;
         }
       }
-      //한성민 추가중//
-      &:nth-child(3){
-        @include breakpoint("phone") {
-          display: none;
-        }
+      
+      // &:nth-child(3){
+      //    @include breakpoint("phone") {
+      //      display: none;
+      //    }
 
-        @include breakpoint("tablet") {
-          display: none;
-        }
-      }
-      //
+      //    @include breakpoint("tablet") {
+      //      display: none;
+      //    }
+      // }
+
       &:first-child {
         justify-content: flex-start;
       }
@@ -52,7 +68,7 @@
         max-width: 125px;
       }
 
-      .search-input {
+      .search-input, {
         width: 215px;
         box-sizing: border-box;
         padding: 5px;
@@ -74,6 +90,24 @@
       }
 
       .nav-icon {
+        .link {
+          .menu {
+            display: none;
+            // flex-direction: column;
+            //width: 35px;
+            //height: 5px;
+            cursor: pointer;
+            margin-bottom: 5px;
+
+            @include breakpoint("tablet"){
+              display: inline-block;
+            }
+            @include breakpoint("phone") {
+              display: inline-block;
+            }
+          }
+        }
+
         margin-left: 30px;
         cursor: pointer;
         .link {

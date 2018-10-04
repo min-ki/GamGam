@@ -21,14 +21,14 @@ const Card = props => {
               <h2 className={styles.cardSubTitle}>'감감'이 도와줄게요.</h2>
             </div>
           </div>
-          <div className={styles.cardList2}>
+          <div className={styles.cardList3}>
             <h1 className={styles.cardTitle}> STEP 3. 여행하기 </h1>
             <div className={styles.subContainer}>
               <h2 className={styles.cardSubTitle}>새로운 세상과 만날 준비됐나요?</h2>
               <h2 className={styles.cardSubTitle}>'감감'과 함께해요.</h2>
             </div>
           </div>
-          <div className={styles.cardList1}>
+          <div className={styles.cardList4}>
             <h1 className={styles.cardTitle}>STEP 4. 추억하기</h1>
             <div className={styles.subContainer}>
               <h2 className={styles.cardSubTitle}>되새겨보세요. 돌이켜보세요.</h2>
