@@ -23,6 +23,10 @@ class Travel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     tags = TaggableManager()
 
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
+
     def __str__(self):
         return self.title
 
@@ -33,6 +37,10 @@ class TravelPlan(models.Model):
     content = models.TextField()
     travel = models.ForeignKey(Travel, on_delete=models.CASCADE, related_name='travel_plan')
     price = models.IntegerField(default=0) # 각각 계획 마다의 비용
+
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
 
     def __str__(self):
         return self.title
