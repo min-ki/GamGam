@@ -9,8 +9,7 @@ const TimeLine = props => {
         return <Loading />;
     } else if (props.feed) {
         return <MapToTimeline {...props} />;
-    }
-    
+    }  
 };
 
 const MapToTimeline = props => (
@@ -19,19 +18,21 @@ const MapToTimeline = props => (
     </div>
 );
 
-const RenderTimeLine = props => (
-    <div className={styles.timeLine}>
-        <Timeline>
-         
-        <Event interval={"2016 – 2018"} title={`${props.title}`} subtitle={"서브타이틀"}>
-            <img className={styles.feedImage} src={props.main_image ? props.main_image : require("images/logo.png")} alt="temp" />
-            <br></br>
-            여행 년도만 받아오기
-            여행경비 : {props.price}
-        <ButtonToolbar className={styles.button}>수정</ButtonToolbar>   
-        </Event>
-        </Timeline>
-    </div>
-);
+const RenderTimeLine = props => {
+    
+    return (
+        <div className={styles.timeLine}>
+            <Timeline>
+            
+            <Event interval={"2016 – 2018"} title={`${props.title}`} subtitle={`${props.tags}`}>
+                <img className={styles.feedImage} src={props.main_image ? props.main_image : require("images/logo.png")} alt="temp" />
+                <br></br>
+                여행경비 : {props.price}
+            <ButtonToolbar className={styles.button}>수정</ButtonToolbar>   
+            </Event>
+            </Timeline>
+        </div>
+    );
+}
 
 export default TimeLine;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import Loading from "components/Loading";
 import FeedTravel from "components/FeedTravel";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 
 const Feed = props => {
     if(props.loading){

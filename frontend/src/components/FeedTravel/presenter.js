@@ -7,7 +7,7 @@ import { Col } from 'reactstrap';
 
 const FeedTravel = (props, context) => {
     return (
-            <Col lg="3" md="4" sm="6" xs="12"> 
+            <Col lg="4" md="4" sm="6" xs="12"> 
                 <div className={styles.feedPhoto}>
                     <Link to={`/feed/${props.id}`} className={styles.detailLink}>
                         <header className={styles.header}>

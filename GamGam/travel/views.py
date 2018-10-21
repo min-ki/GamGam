@@ -19,7 +19,7 @@ class TravelListView(APIView):
     
     def get(self, request, format=None):
         """
-        모든 여행지 리스트 반환
+        모든 여행지 리스트 반환 -> 추억하기 상태있는 게시물만
         """
         user = request.user
         

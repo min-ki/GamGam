@@ -10,6 +10,8 @@ import TravelDetail from 'components/TravelDetail';
 import TimeLine from 'components/TimeLine';
 import Logout from 'components/Logout';
 import TravelPlan from 'components/TravelPlan';
+import UserTravelList from 'components/UserTravelList';
+
 
 const App = props => [
 	// Nav,
@@ -28,7 +30,7 @@ const PrivateRoute = props => (
 		<Route exact path="/feed" component={Feed} /> 
 		<Route path="/feed/:id/" component={TravelDetail} /> 
 		<Route path="/plan" component={TravelPlan} /> 
-		<Route path="/travel" render={() => "travel"} /> 
+		<Route path="/travel" component={UserTravelList} /> 
 		<Route path="/timeline" component={TimeLine} /> 
 		<Route path="/memorize" render={() => "memorize"} /> 
 		<Route path="/logout" component={Logout} /> 

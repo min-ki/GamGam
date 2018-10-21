@@ -22,6 +22,7 @@ class UserProfile(APIView):
             return None
 
     # todo: TimeLine 그리기 위해서 User의 TravelList를 받아와야함
+    # todo: 여기에 TimeLine을 그릴 데이터를 같이 담아서 전송
     def get(self, request, pk, format=None):
         
         found_user = self.get_user(pk)
