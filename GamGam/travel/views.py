@@ -124,16 +124,6 @@ class TravelPlanListView(APIView):
         else:
             return Response(data=serializer.errors, status=304)
 
-class TestView(APIView):
-    
-    def get(self, request, format=None):
-        user = request.user
-        travel = models.Travel.objects.all()
-
-        serializer = serializers.UserProfileTravelSerializer(travel, many=True)
-
-        return Response(data=serializer.data)
-
 class TravelApi(APIView):
 
     API_KEY = "z4gACM%2FayWbDfCPYqKi%2FDzhIir%2B4KK%2BWaimEYcEIZMMqbhmDfySxMbaCACDmtZkDEhXXdm0uTIbSjfRG%2FNE%2BnA%3D%3D"

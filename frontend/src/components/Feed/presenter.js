@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import Loading from "components/Loading";
 import FeedTravel from "components/FeedTravel";
-import { Container, Row } from 'reactstrap';
 
 const Feed = props => {
     if(props.loading){
@@ -15,18 +14,14 @@ const Feed = props => {
 
 const LoadingFeed = props => (
     <div className={styles.feed}>
-        <Loading />
+      <Loading />
     </div>
 );
 
 const RenderFeed = props => (
-    <Container fluid={true}>
-        <Row>
-            {props.feed.map(travel => 
-                  <FeedTravel {...travel} key={travel.id} />
-            )} 
-        </Row>
-    </Container>
+    <div className={styles.feed}>            
+      {props.feed.map(travel => <FeedTravel {...travel} key={travel.id} />)}
+    </div>
 );
 
 Feed.propTypes = {

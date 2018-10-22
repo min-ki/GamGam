@@ -24,7 +24,7 @@ const LoadingFeed = props => (
 const RenderTravelDetail = props => (
     <div className={styles.detailContainer}>
         <div className={styles.detailCard}>
-            <div className={styles.cardTop}>
+            <div className="card-top">
                 <h1 className={styles.detailImage}>
                     <img src={props.travel.main_image ? `${props.travel.main_image}` : require("images/logo.png")} alt="main_image"/>
                 </h1>
@@ -33,6 +33,16 @@ const RenderTravelDetail = props => (
             <h1 className={styles.detailContent}>{props.travel.content}</h1>
             <h1 className={styles.detailStatus}>{props.travel.status}</h1>
             <h1 className={styles.detailPrice}>여행 비용 : {props.travel.price}</h1>
+        </div>
+        <div>
+            <h1>1일차 </h1>
+            <h1>장소 </h1>
+            <h1>
+                <img src={props.travel.main_image ? `${props.travel.main_image}` : require("images/logo.png")} alt="main_image" width="150" height="150"/>
+                <img src={props.travel.main_image ? `${props.travel.main_image}` : require("images/logo.png")} alt="main_image" width="150" height="150"/>
+                <img src={props.travel.main_image ? `${props.travel.main_image}` : require("images/logo.png")} alt="main_image" width="150" height="150"/>
+                <img src={props.travel.main_image ? `${props.travel.main_image}` : require("images/logo.png")} alt="main_image" width="150" height="150"/>
+            </h1>
         </div>
     </div>
 );

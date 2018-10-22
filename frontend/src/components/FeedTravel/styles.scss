@@ -1,13 +1,67 @@
 
 .feed-photo {
   @include boxBorder(yes);
-  // width: 32%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 100%;//$max-card-width;
-  margin: 30px;
-  flex:1 1 auto;
+  display: flex;
+  margin-bottom: 50px;
 
+  .feed-wrapper {
+    display: flex;
+
+    @include breakpoint("phone") {
+      margin: 0;
+      flex-direction: column;
+    }
+    .feed-image {
+      width: 400px;
+      height: 400px;
+    }
+
+    .feed-content {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 400px;
+      height: 400px;
+      min-width: 400px;
+      border: 1px solid black;
+      
+      .feed-content-title {
+        padding: 10px;
+        color: black;
+        font-size: 2em;
+        border-bottom: 1px solid black;
+      }
+
+      .feed-content-attraction {
+        font-size: 1.5em;
+        padding: 10px;
+      }
+
+      .feed-content-duration {
+        font-size: 1.2em;
+        padding: 10px;
+      }
+
+      .feed-content-bottom {
+        margin-top: auto;
+
+        .feed-content-username {
+          padding: 10px;
+          font-size: 1.2em;
+          color: black;
+        }
+  
+        .feed-content-tags {
+          padding: 10px;
+  
+          .tag {
+            color: black;
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+  }
 
   @include breakpoint("phone") {
     background-color: transparent;
@@ -20,17 +74,14 @@
   }
   .detail-link {
     text-decoration: none;
+    display: flex;
 
     &:active, &:after, &:visited {
       color: black;
     }
 
-  }
-
-  .header {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid $border-color;
+    .header {
+      border-bottom: 1px solid $border-color;
     
     .feed-image {
       //border: 1px solid red;
@@ -67,8 +118,8 @@
     }
 
     .header-column {
-      display: flex;
-      flex-direction: column;
+      // display: flex;
+      // flex-direction: column;
 
       .creator {
         font-weight: 600;
@@ -79,6 +130,7 @@
         font-size: $small-font-size;
       }
     }
+  }
   }
 }
 

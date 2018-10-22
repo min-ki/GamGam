@@ -12,63 +12,79 @@
     justify-content: center;
     padding: 5px;
 
-    .plan-input {
-        width: 100%;
-        max-width: 600px;
-        // border: 1px solid red;
-        padding: 10px;
-        
-        .calendar-title {
-            font-size: 1.5em;
-            border-bottom: 1px solid black;
-            margin-bottom: 5px;
-            padding-bottom: 5px;
-        }
-
-        .calendar-range {
-            font-size: 1.1em;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-        }
-        
-        .planMaker-form {
-            .planMaker-formTitle {
-                margin-top: 20px;
-            }
-        }
-    }
-
-    .day-picker {
-        max-width: 300px;
-        // border: 1px solid blue;
-    }
-
     .plan-form {
         display: flex;
-        flex-direction: column;
-        margin-top: 20px;
 
-        .plan-content{
+        .plan-content {
+            width: 500px;
             display: flex;
-            margin-bottom: 5px;
-            .plan-title {
-                margin-right: 5px;
-            }
+            flex-direction: column;
+            // border: 1px solid red;
 
-            .form-control {
+            .plan-travel-list-wrapper {
+                display: flex;
+                flex-direction: column;
 
+                .plan-travel-list-title, .plan-travel-list-region {
+                    font-size: 1.5em;
+                    margin-top: 30px;
+                    padding: 10px;
+                    border-bottom: 1px solid black;
+                }
+
+                .plan-travel-list-title-input, 
+                .plan-travel-list-region-select,
+                .plan-travel-region {
+                    margin-top: 10px;
+                }
+
+                .plan-travel-list-form {
+                    .plan-travel-detail {
+                        display: flex;
+                        flex-direction: column;
+                        margin-bottom: 10px;
+                        .plan-travel-detail-content {
+                            display: flex;
+                            margin-top: 10px;
+                            .plan-travel-detail-title {
+                                width: 100%;
+                            }
+
+                            .plan-travel-detail-delete {
+                                margin-left: 3px;
+                            }
+                        }
+                    }
+                }
             }
         }
-        
-        
-        .plan-add {
-            margin-top: 5px;
-            // margin-left: 5px;
-            text-align: center;
-        }
 
-        .plan-content, .plan-title {
+        .planner {
+            max-width: 600px;
+            padding: 10px;
+            // border: 1px solid blue;
+            .planner-title {
+                font-size: 1.5em;
+                border-bottom: 1px solid black;
+                margin-top: 30px;
+                margin-bottom: 5px;
+                padding-bottom: 5px;
+            }
+    
+            .plan-date {
+                .plan-date-range {
+                    font-size: 1.1em;
+                    margin-top: 10px;
+                    margin-bottom: 15px;
+                    padding-bottom: 5px;
+                }
+            }
+            
+            .planMaker-form {
+                .planMaker-formTitle {
+                    margin-top: 20px;
+                }
+            }
         }
     }
 }
