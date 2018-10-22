@@ -4,7 +4,7 @@ import DayPicker, {
   DateUtils
 } from 'react-day-picker';
 import Helmet from 'react-helmet';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Input } from 'reactstrap';
 
 class TravelPlan extends Component {
   
