@@ -1,3 +1,5 @@
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
 .detail-container {
     display: flex;
     align-items: center;
@@ -45,3 +47,26 @@
     }
 
 }
+
+.gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    
+    .gallery {
+        width: 800px;
+        height: 800px;
+    
+        .image-gallery-content {
+            display: flex;
+
+            .image-gallery-thumbnails {
+                margin-left: 10px;
+                .image-gallery-thumbnails-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+    }
+}
+
