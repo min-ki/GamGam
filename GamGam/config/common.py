@@ -30,6 +30,7 @@ class Common(Configuration):
         'django_filters',            # for filtering rest endpoints
         'taggit',  # Tags for the photos
         'taggit_serializer',  # tag
+        'imagekit',  # thumbnail
         
         # Your apps
         'GamGam.users',
