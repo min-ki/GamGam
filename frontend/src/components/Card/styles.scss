@@ -1,227 +1,106 @@
-// .card-container {
-//     display: flex;
-//     flex-wrap: wrap;
-//     // flex-direction: column;
-    
-//     .card-list1, .card-list3 {
-//         margin: 0 auto;
-//         margin-right: 0;
-//         margin-top: 20px;
-//         padding-top: 50px;
-//         width: 100%;
-//         height: 200px;
-//         flex: 0 40%;
-//         box-sizing: border-box;
-//         box-shadow: 1px 1px 2px 1px gray;
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
 
-//         .card-title {
-//             text-align: left;
-//             font-size: 1.3em;
-//             margin: 0 auto;
-//             width: 70%;
-//             border-bottom: 1px solid white;
-//             padding-bottom: 5px;
-//         }
-//         .sub-container {
-//             margin-top: 15px;
-//             .card-sub-title {
-//                 margin: 0 auto;
-//                 padding: 10px;
-//                 width: 70%;
-//                 text-align: right;
-//                 font-size: 1.1em;
-//             }
-//         }
-//     }
-//     .card-list2, .card-list4 {
-//         margin: 0 auto;
-//         margin-top: 20px;
-//         padding-top: 50px;
-//         width: 100%;
-//         height: 200px;
-//         flex: 0 40%;
-//         box-sizing: border-box;
-//         box-shadow: 1px 1px 2px 1px gray;
-//         .card-title {
-//             text-align: left;
-//             font-size: 1.3em;
-//             margin: 0 auto;
-//             width: 70%;
-//             border-bottom: 1px solid white;
-//             padding-bottom: 5px;
-//         }
-//         .sub-container {
-//             margin-top: 15px;
-//             .card-sub-title {
-//                 margin: 0 auto;
-//                 padding: 10px;
-//                 width: 70%;
-//                 text-align: right;
-//                 font-size: 1.1em;
-//             }
-//         }
-//     }
-//     .card-list1 {
-//         background-color: #7FA8D7;
-//         .card-title {
-//             color: white;
-//         }
-//         .sub-container {
-//             .card-sub-title {
-//                 color: white;
-//             }
-//         }
-//     }
-//     .card-list2 {
-//         background-color: #C4EEFE;
-//         .card-title {
-//             color: #758186;
-//         }
-//          .sub-container {
-//             .card-sub-title {
-//                 color: #758186;
-//             }
-//         }
-//     }
-//     .card-list3 {
-//         background-color: #C4EEFE;
-//         .card-title {
-//             color: #758186;
-//         }
-//          .sub-container {
-//             .card-sub-title {
-//                 color: #758186;
-//             }
-//         }
-//     }
-//     .card-list4 {
-//         background-color: #7FA8D7;
-//         .card-title {
-//             color: white;
-//         }
-//          .sub-container {
-//             .card-sub-title {
-//                 color: white;
-//             }
-//         }
-//     }
-// }
-
-.cardContainer{
-    margin-left: 50px;
-    position: relative;
-
-    .phone{
-        height: 500px;
-        z-index: 101;
-    }
-    .cardList1{
-        position: absolute;
-        top: 70px;
-        left: 93px;
-        width: 210px;
-        height: 370px;
-        background-color:#f7323f;
-        border-radius: 3px;
-        z-index: 102;
-
-        .cardTitle{
-            color: white;
-            font-weight: bold;
-            text-align: center;
-            font-size: 1.2rem;
-            padding: 10px 0;
+    .card-list1, .card-list3 {
+        margin: 0 auto;
+        margin-right: 0;
+        margin-top: 20px;
+        padding-top: 50px;
+        width: 100%;
+        height: 200px;
+        flex: 0 40%;
+        box-sizing: border-box;
+        box-shadow: 1px 1px 2px 1px gray;
+        .card-title {
+            text-align: left;
+            font-size: 1.3em;
+            margin: 0 auto;
+            width: 70%;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
         }
-
-        .subContainer{
-            border-radius: 5px 5px 0 0;
-            margin: 0 10px;
-            padding: 30px 5px 5px 10px;
-            background-color: #f7323f;
-            color: white;
-            height: 330px;
+        .sub-container {
+            margin-top: 15px;
+            .card-sub-title {
+                margin: 0 auto;
+                padding: 10px;
+                width: 70%;
+                text-align: right;
+                font-size: 1.1em;
+            }
         }
     }
-    .cardList2{
-        position: absolute;
-        top: 70px;
-        left: 93px;
-        width: 210px;
-        height: 370px;
-        background-color:#4692ff;
-        border-radius: 3px;
-        z-index: 100;
-
-        .cardTitle{
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            padding: 10px 0;
+    .card-list2, .card-list4 {
+        margin: 0 auto;
+        margin-top: 20px;
+        padding-top: 50px;
+        width: 100%;
+        height: 200px;
+        flex: 0 40%;
+        box-sizing: border-box;
+        box-shadow: 1px 1px 2px 1px gray;
+        .card-title {
+            text-align: left;
+            font-size: 1.3em;
+            margin: 0 auto;
+            width: 70%;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
         }
-
-        .subContainer{
-            border-radius: 5px 5px 0 0;
-            margin: 0 10px;
-            padding: 30px 5px 5px 10px;
-            background-color: #4692ff;
-            color: white;
-            height: 330px;
-        }
-    }
-    .cardList3{
-        position: absolute;
-        top: 70px;
-        left: 93px;
-        width: 210px;
-        height: 370px;
-        background-color:#ffd103;
-        border-radius: 3px;
-        z-index: 100;
-
-        .cardTitle{
-            color: black;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            padding: 10px 0;
-        }
-
-        .subContainer{
-            border-radius: 5px 5px 0 0;
-            margin: 0 10px;
-            padding: 30px 5px 5px 10px;
-            background-color: #ffd103;
-            color: black;
-            height: 330px;
+        .sub-container {
+            margin-top: 15px;
+            .card-sub-title {
+                margin: 0 auto;
+                padding: 10px;
+                width: 70%;
+                text-align: right;
+                font-size: 1.1em;
+            }
         }
     }
-    .cardList4{
-        position: absolute;
-        top: 70px;
-        left: 93px;
-        width: 210px;
-        height: 370px;
-        background-color:#080d22;
-        border-radius: 3px;
-        z-index: 100;
-
-        .cardTitle{
+    .card-list1 {
+        background-color: #7FA8D7;
+        .card-title {
             color: white;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            padding: 10px 0;
         }
-
-        .subContainer{
-            border-radius: 5px 5px 0 0;
-            margin: 0 10px;
-            padding: 30px 5px 5px 10px;
-            background-color: #080d22;
+        .sub-container {
+            .card-sub-title {
+                color: white;
+            }
+        }
+    }
+    .card-list2 {
+        background-color: #C4EEFE;
+        .card-title {
+            color: #758186;
+        }
+         .sub-container {
+            .card-sub-title {
+                color: #758186;
+            }
+        }
+    }
+    .card-list3 {
+        background-color: #C4EEFE;
+        .card-title {
+            color: #758186;
+        }
+         .sub-container {
+            .card-sub-title {
+                color: #758186;
+            }
+        }
+    }
+    .card-list4 {
+        background-color: #7FA8D7;
+        .card-title {
             color: white;
-            height: 330px;
+        }
+         .sub-container {
+            .card-sub-title {
+                color: white;
+            }
         }
     }
 }
-

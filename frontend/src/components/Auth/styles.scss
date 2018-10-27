@@ -7,20 +7,17 @@
     margin-top: 100px;
     justify-content: center;
     align-items: center;
-    // flex-direction: column; //
-
     @include breakpoint("phone") {
         margin-top: 10px;
     }
 
-    // .column1 {
-    //     width: 70%;
-    // }
+    .column1 {
+        width: 70%;
+    }
 
     .column2 {
         padding-left: 2.5rem;
-        max-width: 500px;
-        // width: 30%;
+        width: 30%;
         @include breakpoint("phone") {
             &:first-child {
                 display: none;
@@ -63,6 +60,7 @@
               background-color: transparent;
               border: 0;
           }
+
           .change-link {
             color: $light-blue;
             cursor: pointer;
