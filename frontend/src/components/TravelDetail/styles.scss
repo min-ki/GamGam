@@ -53,12 +53,15 @@
     justify-content: center;
     
     .gallery {
-        width: 800px;
-        height: 800px;
-    
+        width: 1000px;
+        height: auto;
+        
         .image-gallery-content {
             display: flex;
-
+            border: 1px solid #e6e6e6;
+            background-color: white;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+            
             .image-gallery-thumbnails {
                 margin-left: 10px;
                 .image-gallery-thumbnails-container {
@@ -67,6 +70,38 @@
                 }
             }
         }
+
+        .gallery-image-title {
+            margin-bottom: 10px;
+            font-size: 2em;
+            font-weight: 900;
+            text-align: left;
+            padding: 50px;
+            border: 1px solid #e6e6e6;
+            background-color: white;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+            border-radius: .25rem;
+        }
     }
 }
 
+
+.TravelPlanList-container {
+    margin-top: 30px;
+    
+    .TravelPlanList-title {
+        font-size: 2em;
+        padding: 10px;
+    }
+    
+    .TravelPlanList-wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        @include boxBorder(yes);
+    
+        .TravelPlanList-content {
+            font-size: 1.5em;
+            padding: 10px;
+        }
+    }
+}

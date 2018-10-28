@@ -10,6 +10,9 @@ from imagekit.processors import Thumbnail, ResizeToFill
 # todo: 
 class Travel(models.Model):
     
+    class Meta:
+        ordering = ['-updated_at']
+
     TRAVEL_STATUS_CHOICE = (
         ("0", '시작하기'),
         ("1", '여행 중'),
@@ -49,6 +52,8 @@ class TravelPlan(models.Model):
     title = models.CharField(max_length=50) # 세부 여행 계획 제목
     content = models.TextField()
     travel = models.ForeignKey(Travel, on_delete=models.CASCADE, related_name='travel_plan')
+    travel_region = models.CharField(max_length=30)  # 각 계획의 여행 지역
+    travel_day = models.DateField() # 여행 일
     price = models.IntegerField(default=0) # 각각 계획 마다의 비용
 
     @property

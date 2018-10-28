@@ -11,11 +11,16 @@ class Container extends Component {
         getTravelDetail: PropTypes.func.isRequired
     };
 
+    // componentDidMount() {
+        // console.log("test");
+    // }
+
+    // componentWillMount() {
     componentDidMount() {
         const { TravelId, getTravelDetail } = this.props;
         if(!this.props.travel){
             getTravelDetail(TravelId);
-        } else if(!this.props.travel.id !== TravelId) {
+        } else if(!this.props.travel.id !== TravelId) {            
             getTravelDetail(TravelId);
         } else {
             this.setState({

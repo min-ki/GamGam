@@ -1,18 +1,11 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-from rest_framework.schemas import SchemaGenerator
-from rest_framework_swagger import renderers
-from rest_framework import serializers, viewsets
+from rest_framework import status
+from rest_framework import serializers
 from . import models, serializers
-
 import requests, json
-
-# todo: Travel Feed만들기
-# todo: Login 필요 없음
 
 # GET /travel/
 class TravelListView(APIView):
@@ -23,7 +16,7 @@ class TravelListView(APIView):
         """
         user = request.user
         
-        travel_list = models.Travel.objects.all()
+        travel_list = models.Travel.objects.filter(status="2") # 추억하기 게시물만 필터링
         serializer = serializers.TravelSerializer(travel_list, many=True, context={'request' : request})
 
         return Response(serializer.data)
@@ -33,12 +26,14 @@ class TravelListView(APIView):
         여행 계획 생성
         """
         user = request.user
-        serializer = serializers.CreateTravelSerializer(data=request.data)
+        serializer = serializers.TravelSerializer(data=request.data)
 
         if serializer.is_valid():
-            serializer.save(owner=user, status="1")
+            serializer.save(owner=user, status="0")
             return Response(data=serializer.data, status=201)
-            
+        else:
+            return Response(data=serializer.errors, status=400)
+
 class TravelDetailView(APIView):
 
     def get(self, request, pk, format=None):
@@ -97,7 +92,6 @@ class TravelDetailView(APIView):
 class TravelPlanListView(APIView):
 
     def get(self, request, pk, format=None):
-    
         """
         여행지 세부 계획 리스트
         """
@@ -114,9 +108,13 @@ class TravelPlanListView(APIView):
         여행지 세부 계획 생성
         """
         user = request.user
-        travel = models.Travel.objects.get(pk=pk)
 
-        serializer = serializers.CreateTravelPlanSerializer(data=request.data)
+        try:
+            travel = models.Travel.objects.get(pk=pk)
+        except models.Travel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.TravelPlanSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save(travel=travel)
