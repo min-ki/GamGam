@@ -1,6 +1,5 @@
 import React from 'react';
 import Loading from "components/Loading";
-import styles from './styles.scss';
 
 const UserTravelList = props => {
     if(props.loading){
@@ -22,7 +21,7 @@ const RenderUserTravelList = props => {
     return (
         <div className="UserTravelList-wrapper">
             <div className="UserTravelList-content">
-                <img src={props.main_image} width="150" height="150" />
+                <img src={props.main_image} alt="이미지를 넣어주세요" width="150" height="150" />
                 {props.title}
                 {props.price}
             </div>

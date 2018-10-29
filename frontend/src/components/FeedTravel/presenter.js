@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
-import Ionicon from 'react-ionicons';
 import { Link } from 'react-router-dom';
-import { Col } from 'reactstrap';
 
 const FeedTravel = (props, context) => {
     return (

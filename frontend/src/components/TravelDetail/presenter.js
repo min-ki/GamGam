@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Loading from "components/Loading";
-import styles from "./styles.scss";
 import ImageGallery from "react-image-gallery";
 
 const TravelDetail = props => {
@@ -138,8 +136,7 @@ class MyComponent extends Component {
 
   render() {
     const {
-      travel,
-      travel: { main_image, travel_plan, travel_region, title, status, owner, tags, start_at, end_at }
+      travel: { travel_plan, travel_region, title, start_at, end_at }
     } = this.props;
 
     return (
@@ -160,29 +157,6 @@ class MyComponent extends Component {
     );
   }
 }
-
-const RenderTravelDetail = props => (
-  <div className={styles.detailContainer}>
-    <div className={styles.detailCard}>
-      <div className="card-top">
-        <h1 className={styles.detailImage}>
-          <img
-            src={
-              props.travel.main_image
-                ? `${props.travel.main_image}`
-                : require("images/logo.png")
-            }
-            alt="main_image"
-          />
-        </h1>
-        <h1 className={styles.detailTitle}>{props.travel.title}</h1>
-      </div>
-      <h1 className={styles.detailContent}>{props.travel.content}</h1>
-      <h1 className={styles.detailStatus}>{props.travel.status}</h1>
-      <h1 className={styles.detailPrice}>여행 비용 : {props.travel.price}</h1>
-    </div>
-  </div>
-);
 
 const RenderTravelPlanList = props => (
   <div className="TravelPlanList-container">
