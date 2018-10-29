@@ -1,38 +1,73 @@
 @import 'react-day-picker/lib/style.css';
 
-.picker-box{
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 20px;
-}
-
 .plan-container {
     display: flex;
-    justify-content: center;
-    padding: 5px;
+    flex-direction: column;
+    align-items: center;
+
+    .plan-description,
+    .plan-form {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .plan-description {
+        font-size: 1.5rem;
+        font-weight: 800;
+        text-align: center;
+        padding: 30px;
+        @include boxBorder(no);
+    }
 
     .plan-form {
-        display: flex;
+
+        .planner {
+            .planner-title {
+                font-size: 1.5em;
+                border-bottom: 1px solid black;
+                margin-top: 30px;
+                margin-bottom: 5px;
+                padding-left: 5px;
+                padding-bottom: 5px;
+            }
+
+            .plan-date-picker {
+                // border: 1px solid red;
+            }
+
+            .plan-date {
+                .plan-date-range {
+                    font-size: 1.1em;
+                    margin-top: 10px;
+                    margin-bottom: 15px;
+                    padding-bottom: 5px;
+                }
+            }
+
+            .planMaker-form {
+                .planMaker-formTitle {
+                    margin-top: 20px;
+                }
+            }
+        }
 
         .plan-content {
-            width: 500px;
             display: flex;
             flex-direction: column;
-            // border: 1px solid red;
 
             .plan-travel-list-wrapper {
                 display: flex;
                 flex-direction: column;
 
-                .plan-travel-list-title, .plan-travel-list-region {
+                .plan-travel-list-title,
+                .plan-travel-list-region {
                     font-size: 1.5em;
                     margin-top: 30px;
                     padding: 10px;
                     border-bottom: 1px solid black;
                 }
 
-                .plan-travel-list-title-input, 
+                .plan-travel-list-title-input,
                 .plan-travel-list-region-select,
                 .plan-travel-region {
                     margin-top: 10px;
@@ -43,9 +78,24 @@
                         display: flex;
                         flex-direction: column;
                         margin-bottom: 10px;
+
                         .plan-travel-detail-content {
-                            display: flex;
-                            margin-top: 10px;
+                            @include boxBorder(yes);
+                            margin-top: 40px;
+                            padding: 10px;
+
+                            .plan-travel-detail__title {
+                                text-align: center;
+                                margin-top: 10px;
+                                margin-bottom: 10px;
+                                font-size: 1.5em;
+                            }
+
+                            .plan-travel-detail__label {
+                                font-size: 1.2em;
+                                padding: 10px 0 10px 5px;
+                            }
+
                             .plan-travel-detail-title {
                                 width: 100%;
                             }
@@ -53,38 +103,60 @@
                             .plan-travel-detail-delete {
                                 margin-left: 3px;
                             }
+
+                            .detail-content {
+                                margin-bottom: 10px;
+                            }
+
+                            .plan-travel-detail__button {
+                                display: flex;
+                                justify-content: flex-end;
+                            }
+
+                            .plan-travel-detail__daypicker {
+                                display: flex;
+                                justify-content: space-around;
+
+                                .plan-travel-detail__selectday {
+                                    display: flex;
+                                    align-items: center;
+                                    font-size: 1.3em;
+                                }
+                            }
                         }
                     }
                 }
             }
-        }
 
-        .planner {
-            max-width: 600px;
-            padding: 10px;
-            // border: 1px solid blue;
-            .planner-title {
-                font-size: 1.5em;
-                border-bottom: 1px solid black;
-                margin-top: 30px;
-                margin-bottom: 5px;
-                padding-bottom: 5px;
-            }
-    
-            .plan-date {
-                .plan-date-range {
-                    font-size: 1.1em;
-                    margin-top: 10px;
-                    margin-bottom: 15px;
-                    padding-bottom: 5px;
-                }
-            }
-            
-            .planMaker-form {
-                .planMaker-formTitle {
-                    margin-top: 20px;
+            .plan-travel-list-submit {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 10px;
+
+                .plan-travel-list__button {
+
                 }
             }
         }
     }
+}
+
+
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+    background-color: #f0f8ff !important;
+    color: #4a90e2;
+}
+
+.Selectable .DayPicker-Day {
+    border-radius: 0 !important;
+}
+
+.Selectable .DayPicker-Day--start {
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+}
+
+.Selectable .DayPicker-Day--end {
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
 }

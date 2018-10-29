@@ -1,136 +1,152 @@
-
 .feed-photo {
-  @include boxBorder(yes);
-  display: flex;
-  margin-bottom: 50px;
-
-  .feed-wrapper {
+    @include boxBorder(yes);
     display: flex;
+    margin-bottom: 50px;
+
+    .feed-wrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0.5rem 0.5rem 0.3rem rgba(0, 0, 0, .075) !important;
+
+        @include breakpoint("phone") {
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .feed-header {
+            padding: 10px;
+            font-size: 1.5em;
+        }
+
+        .feed-body {
+            display: flex;
+        }
+
+        .feed-image {
+            width: 400px;
+            height: 400px;
+        }
+
+        .feed-content {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 400px;
+            height: 400px;
+            min-width: 400px;
+
+            .feed-content-title {
+                padding: 10px;
+                color: black;
+                background-color: white;
+                font-size: 2em;
+                // border-bottom: 1px solid black;
+                box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+            }
+
+            .feed-content-attraction {
+                font-size: 1.5em;
+                padding: 10px;
+            }
+
+            .feed-content-duration {
+                font-size: 1.2em;
+                padding: 10px;
+            }
+
+            .feed-content-bottom {
+                margin-top: auto;
+
+                .feed-content-username {
+                    padding: 10px;
+                    font-size: 1.2em;
+                    color: black;
+                }
+
+                .feed-content-tags {
+                    padding: 10px;
+
+                    .tag {
+                        color: black;
+                        font-size: 1.2em;
+                    }
+                }
+            }
+        }
+    }
 
     @include breakpoint("phone") {
-      margin: 0;
-      flex-direction: column;
-    }
-    .feed-image {
-      width: 400px;
-      height: 400px;
+        background-color: transparent;
+        border: 1px solid #e6e6e6;
+        margin-bottom: 30px;
     }
 
-    .feed-content {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      width: 400px;
-      height: 400px;
-      min-width: 400px;
-      border: 1px solid black;
-      
-      .feed-content-title {
-        padding: 10px;
-        color: black;
-        font-size: 2em;
-        border-bottom: 1px solid black;
-      }
+    &:last-child {
+        margin-bottom: 0;
+    }
 
-      .feed-content-attraction {
-        font-size: 1.5em;
-        padding: 10px;
-      }
+    .detail-link {
+        text-decoration: none;
+        display: flex;
 
-      .feed-content-duration {
-        font-size: 1.2em;
-        padding: 10px;
-      }
-
-      .feed-content-bottom {
-        margin-top: auto;
-
-        .feed-content-username {
-          padding: 10px;
-          font-size: 1.2em;
-          color: black;
-        }
-  
-        .feed-content-tags {
-          padding: 10px;
-  
-          .tag {
+        &:active,
+        &:after,
+        &:visited {
             color: black;
-            font-size: 1.2em;
-          }
         }
-      }
+
+        .header {
+            border-bottom: 1px solid $border-color;
+
+            .feed-image {
+                //border: 1px solid red;
+                height: 400px;
+            }
+
+            .travel-meta {
+                //border: 1px solid green;
+                padding: 10px 10px 0px 10px;
+                text-overflow: ellipsis;
+
+                &:nth-child(2) {
+                    border-bottom: 1px solid #e6e6e6;
+                    ;
+                }
+
+                .title {
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    font-size: 1.2em;
+                }
+
+                .tag {
+                    font-weight: bold;
+                    color: $light-blue;
+                    font-size: 14px;
+                    padding: 0;
+                }
+            }
+
+            .image {
+                width: 30px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+
+            .header-column {
+                // display: flex;
+                // flex-direction: column;
+
+                .creator {
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+
+                .location {
+                    font-size: $small-font-size;
+                }
+            }
+        }
     }
-  }
-
-  @include breakpoint("phone") {
-    background-color: transparent;
-    border: 1px solid #e6e6e6;
-    margin-bottom: 30px;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-  .detail-link {
-    text-decoration: none;
-    display: flex;
-
-    &:active, &:after, &:visited {
-      color: black;
-    }
-
-    .header {
-      border-bottom: 1px solid $border-color;
-    
-    .feed-image {
-      //border: 1px solid red;
-      height: 400px;
-    }
-
-    .travel-meta {
-      //border: 1px solid green;
-      padding: 10px 10px 0px 10px;
-      text-overflow: ellipsis;
-
-      &:nth-child(2){
-        border-bottom: 1px solid #e6e6e6;;
-      }
-      
-      .title {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        font-size: 1.2em;
-      }
-
-      .tag {
-        font-weight: bold;
-        color: $light-blue;
-        font-size: 14px;
-        padding: 0;
-      }
-    }
-
-    .image {
-      width: 30px;
-      border-radius: 50%;
-      margin-right: 15px;
-    }
-
-    .header-column {
-      // display: flex;
-      // flex-direction: column;
-
-      .creator {
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .location {
-        font-size: $small-font-size;
-      }
-    }
-  }
-  }
 }
-

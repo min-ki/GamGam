@@ -43,7 +43,7 @@ class MyComponent extends Component {
       slideInterval: 2000,
       thumbnailPosition: "bottom",
       showVideo: {},
-      gallery_image: undefined,
+      gallery_image: JSON.parse(localStorage.getItem('gallery_img'))  || undefined,
       description: undefined
     };
   }
@@ -69,22 +69,28 @@ class MyComponent extends Component {
     });
   }
 
-  componentDidMount() {
   
+  componentDidMount() {
   }
 
+
   componentDidUpdate() {
+
     const {
-      travel: { main_image, travel_plan, owner }
+      travel: { main_image, travel_plan, owner, travel_region }
     } = this.props;
 
     let result_img;
     
     if(travel_plan) {
       result_img = travel_plan.map(plan =>
-        plan.plan_images.map(imgs => imgs.file)
-      ); // 세부 계획 이미지들만 뽑아내기
-    }
+        plan.plan_images.map(imgs => ({
+          src: imgs.file,
+          label: imgs.location
+        }))); // 세부 계획 이미지들만 뽑아내기
+      }
+      
+    console.log(result_img);
 
     let result_info;
     
@@ -96,13 +102,19 @@ class MyComponent extends Component {
     }
 
     let merge_result_img = [].concat.apply([], result_img); // 세부계획이미지 1차원 배열로 만들기
-    merge_result_img = [main_image, ...merge_result_img]; // 메인이미지 + 세부계획 이미지
+    merge_result_img = [{
+      src: main_image,
+      label: travel_region
+    }, ...merge_result_img]; // 메인이미지 + 세부계획 이미지
+    
+    console.log(merge_result_img);
 
-    const g_image = merge_result_img.map(src => ({
-      original: src,
-      thumbnail: src,
-      thumbnailLabel: "대한민국"
+    const g_image = merge_result_img.map(img => ({
+      original: img.src,
+      thumbnail: img.src,
+      thumbnailLabel: img.label
     }));
+
 
     let merge_result_info;
     
@@ -122,21 +134,23 @@ class MyComponent extends Component {
         gallery_image: g_image,
         description: merge_result_info
       });
+      localStorage.setItem('gallery_img', JSON.stringify(g_image));
     }
   }
 
   render() {
     const {
       travel,
-      travel: { main_image, travel_plan, title, status, owner, tags }
+      travel: { main_image, travel_plan, travel_region, title, status, owner, tags, start_at, end_at }
     } = this.props;
 
     return (
       <div>
         <div className="gallery">
-          <div className="gallery-image-title">
-            {title}
-            <h1>18. 12. 11 ~ 18. 12. 13</h1>
+          <div className="gallery-image-title-wrapper">
+            <h1 className="gallery-image-title_content gallery-image-title_header">{title}</h1>
+            <h1 className="gallery-image-title_content gallery-image-title_region">{travel_region}</h1>
+            <h1 className="gallery-image-title_content gallery-image-title_date">{start_at} ~ {end_at}</h1>
           </div>
           <ImageGallery ref={i => (this._imageGallery = i)} items={this.state.gallery_image} onClick={this._onImageClick.bind(this)} onScreenChange={this._onScreenChange.bind(this)} onSlide={this._onSlide.bind(this)} />
         </div>
@@ -177,10 +191,15 @@ const RenderTravelPlanList = props => (
     <h1 className="TravelPlanList-title">세부 여행 </h1>
     {props.travel_plan.map(plan => (
       <div className="TravelPlanList-wrapper">
-        <h1 className="TravelPlanList-content">제목 : {plan.title}</h1>
-        <h1 className="TravelPlanList-content">내용 : {plan.content}</h1>
-        <h1 className="TravelPlanList-content">비용 : {plan.price}</h1>
-        <h1 className="TravelPlanList-content">일자 : {plan.travel_day}</h1>
+        <div className="TravelPlanList-content_left">
+          <h1 className="TravelPlanList-content">제목 : {plan.title}</h1>
+          <h1 className="TravelPlanList-content">내용 : {plan.content}</h1>
+          <h1 className="TravelPlanList-content">비용 : {plan.price}</h1>
+          <h1 className="TravelPlanList-content">일자 : {plan.travel_day}</h1>
+        </div>
+        <div className="TravelPlanList-content_right">
+          <img src={plan.plan_images[0] ? plan.plan_images[0].file : require("images/logo.png")} alt="temp" width="400" height="400"/>
+        </div>
       </div>
     ))}
   </div>
