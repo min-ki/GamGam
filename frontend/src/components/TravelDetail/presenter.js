@@ -77,22 +77,19 @@ class MyComponent extends Component {
   componentDidUpdate() {
 
     const {
-      travel: { main_image, travel_plan, owner, travel_region }
+      travel: { main_image, travel_plan, owner, travel_region, title }
     } = this.props;
 
-    let result_img;
-    
+    let result_img, result_info, merge_result_info;
     if(travel_plan) {
       result_img = travel_plan.map(plan =>
         plan.plan_images.map(imgs => ({
           src: imgs.file,
-          label: imgs.location
+          label: imgs.location,
+          description: imgs.caption
         }))); // 세부 계획 이미지들만 뽑아내기
       }
       
-    console.log(result_img);
-
-    let result_info;
     
     if(travel_plan) {
       result_info = travel_plan.map(plan => ({
@@ -101,22 +98,23 @@ class MyComponent extends Component {
       })); // 세부 계획 정보만 뽑아내기
     }
 
+    // 메인이미지 + 세부계획 이미지 리스트
+
     let merge_result_img = [].concat.apply([], result_img); // 세부계획이미지 1차원 배열로 만들기
     merge_result_img = [{
       src: main_image,
-      label: travel_region
+      label: travel_region,
+      description: title
     }, ...merge_result_img]; // 메인이미지 + 세부계획 이미지
     
-    console.log(merge_result_img);
-
     const g_image = merge_result_img.map(img => ({
       original: img.src,
       thumbnail: img.src,
-      thumbnailLabel: img.label
+      thumbnailLabel: img.label,
+      description: img.description
     }));
 
 
-    let merge_result_info;
     
     if(result_info){
       merge_result_info = [].concat.apply([], result_info);

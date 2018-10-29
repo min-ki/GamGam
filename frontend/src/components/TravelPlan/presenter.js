@@ -243,7 +243,7 @@ class TravelPlan extends Component {
                 options={nations}
                 required
               />
-              {travel_region ? (
+              {/* {travel_region ? (
                 <Select
                   className="plan-travel-list-region-select"
                   value={travel_city}
@@ -251,7 +251,7 @@ class TravelPlan extends Component {
                   options={citys.travel_region}
                   isClearable={false}
                 />
-              ) : null}
+              ) : null} */}
 
               <FormGroup>
                 <h1 className="plan-travel-list-title">예상 비용</h1>

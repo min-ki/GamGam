@@ -27,7 +27,7 @@ const FeedImage = (props) => (
 
 const FeedContent = (props) => (
     <div className="feed-content">
-      <h1 className="feed-content-title">{props.title}</h1>
+      {/* <h1 className="feed-content-title">{props.title}</h1> */}
       <p className="feed-content-attraction">여행지 : {props.travel_region} </p>
       <p className="feed-content-duration">여행기간 : {props.start_at} - {props.end_at} </p>
       <div className="feed-content-bottom">  
