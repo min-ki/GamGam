@@ -110,7 +110,7 @@ class TravelPlan extends Component {
 
     const user_token = localStorage.getItem("jwt");
 
-    const { from, to, travel_title, travel_region, travel_plan, tags, travel } = this.state;
+    const { from, to, travel_title, travel_region, travel_plan, tags } = this.state;
 
     let start_at, end_at;
 
