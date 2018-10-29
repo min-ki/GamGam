@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {} from "react";
 import { Timeline, Event } from "react-timeline-scribble";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
