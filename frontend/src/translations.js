@@ -1,31 +1,11 @@
 export const translations = {
-  'es': {
-    'Don\'t have an account?': '',
-    'Sign up': '',
-    'Have an account?': 'Ya tienes una cuenta?',
-    'Log in': 'Inciar Sesiom',
-    'Get the app': '',
-    'Username': 'Usuario',
-    'Password': '',
-    'or': '',
-    'Log in with Facebook': '',
-    'Forgot password?': '',
-    'Sign up to see photos and videos from your friends.': '',
-    'Email': '',
-    'Full Name': '',
-    'By signing up, you agree to our': '',
-    'Terms & Privacy Policy': '',
-    'About us': '',
-    'Support': '',
-    'Blog': '',
-    'Press': '',
-    'API': '',
-    'Jobs': '',
-    'Privacy': '',
-    'Terms': '',
-    'Directory': '',
-    'Language': '',
+  'en': {
+    '둘러보기': 'FEED',
+    '계획하기': 'PLAN',
+    '여행하기': 'TRAVEL',
+    '추억하기': 'REMEMBER',
   },
+
   'options': {
   },
 };

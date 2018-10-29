@@ -42,12 +42,10 @@ django-allauth
 # JWT
 djangorestframework-jwt
 
-# Swagger
-django-rest-swagger
-drf-yasg
-
-# Pillow
-pillow
+# image
+pillow # django-imagekit 사전 설치
+pilkit # django-imagekit 사전 설치
+django-imagekit
 
 # tag
 django-taggit

@@ -1,0 +1,30 @@
+.UserTravelList-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .plan-description {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .plan-description {
+        font-size: 1.5rem;
+        font-weight: 800;
+        text-align: center;
+        padding: 30px;
+        @include boxBorder(no);
+    }
+
+    .UserTravelList-wrapper {
+        width: 800px;
+        border: 1px solid red;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        .UserTravelList-content {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

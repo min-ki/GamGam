@@ -1,20 +1,25 @@
-import { connect } from 'react-redux';
-import Container from './container';
-import { actionCreators as travelActions } from "redux/modules/travel"; 
+import { connect } from "react-redux";
+import Container from "./container";
+import { actionCreators as travelActions } from "redux/modules/travel";
 
 const mapStateToProps = (state, ownProps) => {
-    const { travels: { feed } } = state;
-    return {
-        feed
-    };
-}
+  const {
+    travels: { feed }
+  } = state;
+  return {
+    feed
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        getFeed: () => {
-            dispatch(travelActions.getFeed());
-        }
+  return {
+    getFeed: () => {
+      dispatch(travelActions.getFeed());
     }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Container);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Container);

@@ -1,3 +1,5 @@
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
 .detail-container {
     display: flex;
     align-items: center;
@@ -44,4 +46,102 @@
         }
     }
 
+}
+
+.gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    
+    .gallery {
+        width: 1000px;
+        height: auto;
+        
+        .image-gallery-content {
+            display: flex;
+            border: 1px solid #e6e6e6;
+            background-color: white;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+            
+            .image-gallery-slide-wrapper {
+                width: 600px;
+            }
+
+            .image-gallery-thumbnails-wrapper {
+                margin: 0 auto;
+            }
+
+            .image-gallery-thumbnails {
+
+                .image-gallery-thumbnails-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+
+        .gallery-image-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            font-weight: 900;
+            text-align: left;
+            padding: 30px;
+            border: 1px solid #e6e6e6;
+            background-color: white;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+            border-radius: .25rem;
+
+            .gallery-image-title_content {
+                padding: 10px;
+            }
+
+            .gallery-image-title_header {
+                border-bottom: 1px solid black;
+                box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .075);
+            }
+
+            .gallery-image-title_region, 
+            .gallery-image-title_date {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+        }
+    }
+}
+
+
+.TravelPlanList-container {
+    margin-top: 30px;
+    
+    .TravelPlanList-title {
+        font-size: 2em;
+        padding: 10px;
+    }
+    
+    .TravelPlanList-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-height: 400px;
+        @include boxBorder(yes);
+
+        .TravelPlanList-content_left {
+            &:last-child {
+       
+            }
+        }
+
+        .TravelPlanList-content_right {
+
+        }
+        
+        .TravelPlanList-content {
+            font-size: 1.5em;
+            padding: 10px;
+        }
+    }
 }

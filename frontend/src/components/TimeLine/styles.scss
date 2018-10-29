@@ -1,8 +1,28 @@
-.time-line {
+.timeline {
     display: flex;
-    flex-basis : 600px;
     flex-direction: column;
-   // justify-content: center;
+    // flex-basis : 600px;
+    
+    .timeline-wrapper {
+        display: flex;
+        border: 1px solid blue;
+        align-items: center;
+        justify-content: center;
+
+        .timeline-content {
+
+            .timeline-image {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        .timeline-map {
+            width: 400px;
+            height: 400px;
+        }
+
+    }
     
     .button{
         width: 80px;
@@ -23,3 +43,4 @@
         border: 1px solid #e6e6e6;
     }
 }
+

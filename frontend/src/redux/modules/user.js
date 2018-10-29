@@ -5,6 +5,7 @@ const SAVE_TOKEN = "SAVE_TOKEN";
 const LOGOUT = "LOGOUT";
 const SET_USER_LIST = "SET_USER_LIST";
 const GET_USER_PLAN_LIST = "GET_USER_PLAN_LIST";
+
 // action creatros
 
 function saveUserInfo(token, userId){
