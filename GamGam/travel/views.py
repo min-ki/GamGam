@@ -34,7 +34,6 @@ class TravelListView(APIView):
         else:
             return Response(data=serializer.errors, status=400)
 
-
 class TravelDetailView(APIView):
 
     def get(self, request, pk, format=None):
@@ -55,13 +54,10 @@ class TravelDetailView(APIView):
         """
         user = request.user
 
-        travel = models.Travel.objects.get(
-            owner=user,
-            pk=pk
-        )
+        travel = models.Travel.objects.get(pk=pk)
 
-        travel.title = request.data['title']
-        travel.status = request.data['status']
+        # travel.title = request.data['title']
+        # travel.status = request.data['status']
 
         serializer = serializers.UpdateTravelSerializer(travel, data=request.data)
 
@@ -123,29 +119,36 @@ class TravelPlanListView(APIView):
         else:
             return Response(data=serializer.errors, status=304)
 
-    def put(self, request, pk, format=None):
+class TravelPlanDetailView(APIView):
+    
+    def get(self, request, plan_pk, format=None):
+        """
+        여행지 세부 계획 상세보기
+        """
+        try:
+            plan = get_object_or_404(models.TravelPlan, plan_pk=plan_pk)
+        except models.TravelPlan.DoesNotExist:
+            raise Http404("Not founded")
+
+        serializer = serializers.TravelPlanSerializer(plan)
+        return Response(serializer.data)
+
+    def put(self, request, pk, plan_pk, format=None):
         """
         여행지 세부 계획 업데이트
         """
-        user = request.user
-
-
         try:
-            travel = models.Travel.objects.get(pk=pk)
-        except models.Travel.DoesNotExist:
+            plan = models.TravelPlan.objects.get(id=plan_pk)
+        except models.TravelPlan.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        plan_list = models.TravelPlan.objects.filter(travel=travel)
-        print(plan_list)
-
-        serializer = serializers.TravelPlanSerializer(data=request.data)
+        serializer = serializers.UpdateTravelPlanSerializer(plan, data=request.data, partial=True)
 
         if serializer.is_valid():
-            serializer.save(travel=travel)
+            serializer.save(plan=plan)
             return Response(data=serializer.data, status=201)
         else:
             return Response(data=serializer.errors, status=304)
-
 
 class TravelApi(APIView):
 
