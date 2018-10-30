@@ -34,6 +34,7 @@ class TravelListView(APIView):
         else:
             return Response(data=serializer.errors, status=400)
 
+
 class TravelDetailView(APIView):
 
     def get(self, request, pk, format=None):
@@ -121,6 +122,30 @@ class TravelPlanListView(APIView):
             return Response(data=serializer.data, status=201)
         else:
             return Response(data=serializer.errors, status=304)
+
+    def put(self, request, pk, format=None):
+        """
+        여행지 세부 계획 업데이트
+        """
+        user = request.user
+
+
+        try:
+            travel = models.Travel.objects.get(pk=pk)
+        except models.Travel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        plan_list = models.TravelPlan.objects.filter(travel=travel)
+        print(plan_list)
+
+        serializer = serializers.TravelPlanSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save(travel=travel)
+            return Response(data=serializer.data, status=201)
+        else:
+            return Response(data=serializer.errors, status=304)
+
 
 class TravelApi(APIView):
 
