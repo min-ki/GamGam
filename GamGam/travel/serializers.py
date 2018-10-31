@@ -4,12 +4,14 @@ from GamGam.users import models as user_models
 from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 
 class ImageSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Image
         fields = (
             'id',
             'file',
             'location',
+            'caption',
         )
 
 class TravelPlanSerializer(serializers.ModelSerializer):
@@ -31,6 +33,7 @@ class TravelPlanSerializer(serializers.ModelSerializer):
             'price',
             'travel',
             'travel_day',
+            'travel_region',
             'plan_images',
         )
 
