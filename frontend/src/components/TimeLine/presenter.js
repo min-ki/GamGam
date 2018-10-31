@@ -23,7 +23,6 @@ const MapToTimeline = props => (
 );
 
 const RenderTimeLine = props => {
-  
   return (
     <div className="timeline-wrapper">
       <div className="timeline-content">
@@ -49,14 +48,7 @@ const RenderTimeLine = props => {
         <div className = "timeline-image-center">
           {props.travel_plan.map(plan => (
             <img className ="timeline-image-move" src={plan.plan_images[0] ? plan.plan_images[0].file : require("images/logo.png")} alt="temp" width="100" height="100"/>
-          ))}
-            {/*
-            <div className ="TimeLineList">
-            <h1 className="TimeLineList-content">제목 : {plan.title}</h1>
-            <h1 className="TimeLineList-content">일자 : {plan.travel_day}</h1>
-            <h1 className="TimeLineList-content">내용 : {plan.content}</h1>
-            </div>
-            */}
+            ))}
         </div>
       </div>
     </div>
