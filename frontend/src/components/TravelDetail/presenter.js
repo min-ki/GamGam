@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ImageGallery from "react-image-gallery";
+import styles from './styles.scss';
 
 const TravelDetail = props => {
   if (props.loading) {
@@ -164,10 +165,10 @@ const RenderTravelPlanList = props => (
     {props.travel_plan.map(plan => (
       <div className="TravelPlanList-wrapper">
         <div className="TravelPlanList-content_left">
-          <h1 className="TravelPlanList-content">제목 : {plan.title}</h1>
-          <h1 className="TravelPlanList-content">내용 : {plan.content}</h1>
-          <h1 className="TravelPlanList-content">비용 : {plan.price}</h1>
-          <h1 className="TravelPlanList-content">일자 : {plan.travel_day}</h1>
+          <h1 className="TravelPlanList-content TravelPlanList-content__title">{plan.title}</h1>
+          <h1 className="TravelPlanList-content TravelPlanList-content__content">{plan.content}</h1>
+          <h1 className="TravelPlanList-content TravelPlanList-content__price">비용 : {plan.price}</h1>
+          <h1 className="TravelPlanList-content TravelPlanList-content__date">일자 : {plan.travel_day}</h1>
         </div>
         <div className="TravelPlanList-content_right">
           <img src={plan.plan_images[0] ? plan.plan_images[0].file : require("images/logo.png")} alt="temp" width="400" height="400"/>

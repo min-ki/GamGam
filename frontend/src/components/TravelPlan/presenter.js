@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import Textarea from "react-textarea-autosize";
 
 // local
-import { nations, citys } from "./nation";
+import { nations } from "./nation";
 
 // style
 import styles from "./styles.scss";
@@ -166,7 +166,7 @@ class TravelPlan extends Component {
       .then(response => response.json())
       .then(data => this.setState({ data }));
 
-    // this.props.history.push("/travel");
+    this.props.history.push("/travel");
   };
 
   calcDayBetweenRange = (from, to) => {
@@ -179,7 +179,7 @@ class TravelPlan extends Component {
   render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
-    const { travel_region, travel_city, price, travel_plan } = this.state;
+    const { travel_region, price, travel_plan } = this.state;
 
     return (
       <div className="plan-container">
@@ -275,10 +275,10 @@ class TravelPlan extends Component {
                 />
               </FormGroup>
 
-              <TravelDetailPlan
+              {/* <TravelDetailPlan
                 travel_plan={travel_plan}
                 handleTravelPlans={this.handleTravelPlans}
-              />
+              /> */}
             </div>
             <div className="plan-travel-list-submit">
              <Button className="plan-travel-list__button">여행계획 생성하기</Button>

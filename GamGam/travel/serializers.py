@@ -91,11 +91,27 @@ class TravelSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 class UpdateTravelSerializer(serializers.ModelSerializer):
 
-    owner = serializers.ReadOnlyField()
+    # owner = serializers.ReadOnlyField()
 
     class Meta:
         model = Travel
-        fields = ('title', 'status', 'owner')
+        fields = (
+            'title', 
+            'status'
+        )
+
+class UpdateTravelPlanSerializer(serializers.ModelSerializer):
+
+    # owner = serializers.ReadOnlyField()
+    
+    class Meta:
+        model = TravelPlan
+        fields = (
+            'title',
+            'content',
+            'travel',
+            'travel_day',
+        )
 
 class CreateTravelPlanSerializer(serializers.ModelSerializer):
 

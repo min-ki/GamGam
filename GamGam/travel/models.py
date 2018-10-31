@@ -56,6 +56,10 @@ class TravelPlan(models.Model):
     travel_day = models.DateField() # 여행 일
     price = models.IntegerField(default=0) # 각각 계획 마다의 비용
 
+
+    class Meta:
+        ordering = ['travel_day']
+
     @property
     def natural_time(self):
         return naturaltime(self.created_at)

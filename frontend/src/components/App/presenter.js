@@ -10,6 +10,7 @@ import Feed from "components/Feed";
 import TravelDetail from "components/TravelDetail";
 import TravelPlan from "components/TravelPlan";
 import UserTravelList from "components/UserTravelList";
+import UserTravelDetail from "components/UserTravelDetail";
 import TimeLine from "components/TimeLine";
 import Footer from "components/Footer";
 
@@ -30,7 +31,8 @@ const PrivateRoute = props => (
     <Route exact path="/feed" component={Feed} />
     <Route path="/feed/:id/" component={TravelDetail} />
     <Route path="/plan" component={TravelPlan} />
-    <Route path="/travel" component={UserTravelList} />
+    <Route exact path="/travel" component={UserTravelList} />
+    <Route path="/travel/:id" component={UserTravelDetail} />
     <Route path="/timeline" component={TimeLine} />
     <Route path="/memorize" render={() => "memorize"} />
     <Route path="/logout" component={Logout} />

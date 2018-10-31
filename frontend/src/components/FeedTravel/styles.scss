@@ -37,10 +37,10 @@
             width: 400px;
             height: 400px;
             min-width: 400px;
+            color: black;
 
             .feed-content-title {
                 padding: 10px;
-                color: black;
                 background-color: white;
                 font-size: 2em;
                 // border-bottom: 1px solid black;
@@ -55,6 +55,10 @@
             .feed-content-duration {
                 font-size: 1.2em;
                 padding: 10px;
+            }
+            
+            .feed-content-travel_region {
+                margin-top: 10px;
             }
 
             .feed-content-bottom {
@@ -74,6 +78,12 @@
                         font-size: 1.2em;
                     }
                 }
+            }
+
+            .TravelPlanRegion-travel_region {
+                color: #1559acfa;
+                margin-left: 10px;
+                padding: 5px;
             }
         }
     }
