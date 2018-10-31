@@ -54,13 +54,10 @@ class TravelDetailView(APIView):
         """
         user = request.user
 
-        travel = models.Travel.objects.get(
-            owner=user,
-            pk=pk
-        )
+        travel = models.Travel.objects.get(pk=pk)
 
-        travel.title = request.data['title']
-        travel.status = request.data['status']
+        # travel.title = request.data['title']
+        # travel.status = request.data['status']
 
         serializer = serializers.UpdateTravelSerializer(travel, data=request.data)
 
@@ -118,6 +115,37 @@ class TravelPlanListView(APIView):
 
         if serializer.is_valid():
             serializer.save(travel=travel)
+            return Response(data=serializer.data, status=201)
+        else:
+            return Response(data=serializer.errors, status=304)
+
+class TravelPlanDetailView(APIView):
+    
+    def get(self, request, plan_pk, format=None):
+        """
+        여행지 세부 계획 상세보기
+        """
+        try:
+            plan = get_object_or_404(models.TravelPlan, plan_pk=plan_pk)
+        except models.TravelPlan.DoesNotExist:
+            raise Http404("Not founded")
+
+        serializer = serializers.TravelPlanSerializer(plan)
+        return Response(serializer.data)
+
+    def put(self, request, pk, plan_pk, format=None):
+        """
+        여행지 세부 계획 업데이트
+        """
+        try:
+            plan = models.TravelPlan.objects.get(id=plan_pk)
+        except models.TravelPlan.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.UpdateTravelPlanSerializer(plan, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save(plan=plan)
             return Response(data=serializer.data, status=201)
         else:
             return Response(data=serializer.errors, status=304)
