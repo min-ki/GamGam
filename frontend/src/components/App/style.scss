@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR');
 
 body {
-  font-family: 'Noto Serif KR', sans-serif;
-  background-color: $bg-color;
-  font-size: $normal-font-size;
+  font-family: 'Noto Serif KR', sans-serif !important;
+  background-color: $bg-color !important;
+  font-size: $normal-font-size !important;
 }
 
 * {

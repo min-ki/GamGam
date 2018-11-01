@@ -22,15 +22,17 @@ const MapToUserTravelList = props => (
 const RenderUserTravelList = props => {
   return (
     <div className="UserTravelList-wrapper">
-      <Link to={`/travel/${props.id}`}>
         <div className="UserTravelList-content">
-          <img className="UserTravelLIST-image" src={props.main_image ? props.main_image : require("images/2-(150x150).jpg")} alt="temp" width="150" height="150"/>
-          <h1 className="UserTravelList-title1">제목 : {props.title}</h1>
-          <h1 className="UserTravelList-title2">비용 : {props.price}</h1>
-          <h1 className="UserTravelList-day">일자 : {props.start_at} ~ {props.end_at}</h1>
-          <ButtonToolbar className="UserTravelList-button">수정</ButtonToolbar>
+          <img className="UserTravelList-image" src={props.main_image ? props.main_image : require("images/2-(150x150).jpg")} alt="temp" width="150" height="150"/>
+          <div className="UserTravelList-content__right">
+            <h1 className="UserTravelList-title1">제목 : {props.title}</h1>
+            <h1 className="UserTravelList-title2">비용 : {props.price}</h1>
+            <h1 className="UserTravelList-day">일자 : {props.start_at} ~ {props.end_at}</h1>
+            <Link to={`/travel/${props.id}`}>
+              <ButtonToolbar className="UserTravelList-button">수정</ButtonToolbar>
+            </Link>
+          </div>
         </div>
-      </Link>
     </div>
   );
 };

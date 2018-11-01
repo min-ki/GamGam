@@ -6,9 +6,6 @@
     .plan-description {
         width: 100%;
         max-width: 800px;
-    }
-
-    .plan-description {
         font-size: 1.5rem;
         font-weight: 800;
         text-align: center;
@@ -22,27 +19,19 @@
         text-align: center;
         padding: 10px;
         
-    }
 
-    .UserTravelList-wrapper {
-        width: 800px;
-        border: 1px solid green;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        
+        .UserTravelList-wrapper {
+            width: 800px;
+            border: 1px solid green;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            
 
-        .UserTravelList-content {
-            display: flex;
-            justify-content: space-between;
-
-            .UserTravelList-image{
-                flex: 1;
-            }
-            .UserTravelList-buttonside{
-                flex: 2;
-                
+            .UserTravelList-content {
                 display: flex;
-                flex-direction: column;
+                color: black;
+                font-size: 1.5em;
+                    
                 border: 1px solid black;
                 position: relative;
 
@@ -56,8 +45,6 @@
                     flex: 2;
                     text-align: left;
                     font-size: 15px
-                    
-                    
                 }
                 .UserTravelList-day{
                     flex: 1;
@@ -91,14 +78,12 @@
                         border: 1px solid #e6e6e6;
                     }
                 }
+
+                .UserTravelList-content__right {
+                    display: flex;
+                    flex-direction: column;
+                }
             }
-            
         }
-        
     }
-
-    
-
-
-
 }

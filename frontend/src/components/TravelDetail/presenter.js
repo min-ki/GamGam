@@ -171,7 +171,7 @@ const RenderTravelPlanList = props => (
           <h1 className="TravelPlanList-content TravelPlanList-content__date">일자 : {plan.travel_day}</h1>
         </div>
         <div className="TravelPlanList-content_right">
-          <img src={plan.plan_images[0] ? plan.plan_images[0].file : require("images/logo.png")} alt="temp" width="400" height="400"/>
+          <img src={plan.plan_images[0] ? plan.plan_images[0].file : require("images/2-(400x400).jpg")} alt="temp" width="400" height="398"/>
         </div>
       </div>
     ))}

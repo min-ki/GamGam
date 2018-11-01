@@ -58,7 +58,11 @@
             }
             
             .feed-content-travel_region {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
                 margin-top: 10px;
+                max-height: 200px;
             }
 
             .feed-content-bottom {
