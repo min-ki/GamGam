@@ -63,7 +63,7 @@ class TravelDetailView(APIView):
 
         if serializer.is_valid():
             serializer.save(owner=user)
-            return Response(data=serializer.data, status=204)
+            return Response(data=serializer.data, status=200)
         else:
             return Response(data=serializer.errors, status=400)
 
