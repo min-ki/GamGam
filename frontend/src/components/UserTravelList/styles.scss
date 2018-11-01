@@ -13,52 +13,60 @@
         @include boxBorder(no);
     }
 
-    .plan-description2 {
+    .plan-windows {
         font-size: 0.5rem;
         font-weight: 800;
         text-align: center;
         padding: 10px;
-        
 
         .UserTravelList-wrapper {
             width: 800px;
-            border: 1px solid green;
+            border: 1px solid #e6e6e6;
+            background-color: white;
+            box-shadow: 0 .125rem .65rem rgba(0, 0, 0, .075) !important;
             margin-top: 20px;
             margin-bottom: 10px;
-            
 
             .UserTravelList-content {
                 display: flex;
                 color: black;
                 font-size: 1.5em;
-                    
-                border: 1px solid black;
                 position: relative;
+                
+                .UserTravelList-title-day{
+                    display: flex;
+                    flex: 0.3px;
+                    flex-direction: row;
 
-                .UserTravelList-title1{
-                    flex: 1;
-                    text-align: left;
-                    font-size: 25px
-                    
+                    .UserTravelList-title{
+                        margin-top: 4.5px;
+                        margin-right: 7px;
+                        text-align: left;
+                        font-size: 20px
+                    }
+                    .UserTravelList-day{
+                        margin-top: 7.0px;
+                        flex: 1; 
+                        text-align: center;
+                        font-size: 15px    
+                    }
                 }
-                .UserTravelList-title2{
-                    flex: 2;
+                .UserTravelList-cost{
+                    flex:0.1px;
                     text-align: left;
-                    font-size: 15px
+                    font-size: 17px
                 }
-                .UserTravelList-day{
-                    flex: 1;
+                .UserTravelList-region{
+                    flex:0.2px;
                     text-align: left;
-                    font-size: 25px
-                    
+                    font-size: 17px
                 }
+
                 .UserTravelList-button{
                     flex: 1;
-
                     position: absolute; 
                     bottom: 0;
                     right: 0;
-
                     width: 50px;
                     text-align: center;        
                     display: inline-block;
@@ -66,10 +74,10 @@
                     border-radius: 15px;
                     padding: 10px;
                     font-weight: bold;
-                    font-size: 12px;
+                    font-size: 14px;
                     color: white;
-                    margin-right: 3px;
-                    margin-bottom: 3px;
+                    margin-right: 5.5px;
+                    margin-bottom: 5.5px;
                     background-color: $light-blue;
 
                     &:hover{
@@ -82,6 +90,7 @@
                 .UserTravelList-content__right {
                     display: flex;
                     flex-direction: column;
+                    margin-left: 5px;
                 }
             }
         }
