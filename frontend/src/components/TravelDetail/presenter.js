@@ -167,7 +167,7 @@ const RenderTravelPlanList = props => (
         <div className="TravelPlanList-content_left">
           <h1 className="TravelPlanList-content TravelPlanList-content__title">{plan.title}</h1>
           <h1 className="TravelPlanList-content TravelPlanList-content__content">{plan.content}</h1>
-          <h1 className="TravelPlanList-content TravelPlanList-content__price">비용 : {plan.price}</h1>
+          <h1 className="TravelPlanList-content TravelPlanList-content__price">비용 : {plan.price}원</h1>
           <h1 className="TravelPlanList-content TravelPlanList-content__date">일자 : {plan.travel_day}</h1>
         </div>
         <div className="TravelPlanList-content_right">

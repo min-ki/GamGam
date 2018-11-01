@@ -39,30 +39,44 @@
             min-width: 400px;
             color: black;
 
-            .feed-content-title {
+            .feed-content-title,
+            .feed-content-attraction,
+            .feed-content-duration {
+            // .feed-content-travel_region__header {
                 padding: 10px;
+            }
+
+            .feed-content-title {
                 background-color: white;
                 font-size: 2em;
                 // border-bottom: 1px solid black;
                 box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
             }
-
+            
             .feed-content-attraction {
                 font-size: 1.5em;
-                padding: 10px;
+                .feed-content-duration {
+                    display: inline;
+                    font-size: 14px;
+                }
             }
 
-            .feed-content-duration {
-                font-size: 1.2em;
-                padding: 10px;
-            }
             
+            .feed-content-travel_region__header {
+                font-size: 1.3em;
+                border-bottom: 1px solid black;
+                margin: 10px 10px 0 10px;
+                padding-bottom: 10px;
+            }
+
             .feed-content-travel_region {
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
                 margin-top: 10px;
                 max-height: 200px;
+                overflow-x: hidden;
+                max-width: 330px;
             }
 
             .feed-content-bottom {

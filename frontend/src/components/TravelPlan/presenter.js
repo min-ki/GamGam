@@ -275,10 +275,10 @@ class TravelPlan extends Component {
                 />
               </FormGroup>
 
-              {/* <TravelDetailPlan
+              <TravelDetailPlan
                 travel_plan={travel_plan}
                 handleTravelPlans={this.handleTravelPlans}
-              /> */}
+              />
             </div>
             <div className="plan-travel-list-submit">
              <Button className="plan-travel-list__button">여행계획 생성하기</Button>

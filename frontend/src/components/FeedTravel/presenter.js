@@ -25,9 +25,12 @@ const FeedImage = (props) => (
 
 const FeedContent = (props) => (
     <div className="feed-content">
-      {/* <h1 className="feed-content-title">{props.title}</h1> */}
-      <p className="feed-content-attraction">여행지 : {props.travel_region} </p>
-      <p className="feed-content-duration">여행기간 : {props.start_at} - {props.end_at} </p>
+        <p className="feed-content-attraction">
+            {props.travel_region} 
+            <p className="feed-content-duration">{props.start_at} - {props.end_at} </p>
+        </p>
+    
+      <p className="feed-content-travel_region__header">다녀온 곳</p>
       <div className="feed-content-travel_region">{props.travel_plan.map((plan, idx) => <TravelPlanRegion travel_region={plan.travel_region} key={idx} />)}</div>
       <div className="feed-content-bottom">  
         <h1 className="feed-content-username">여행자 : {props.owner.username}</h1>  

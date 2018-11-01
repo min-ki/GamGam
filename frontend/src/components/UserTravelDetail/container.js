@@ -34,7 +34,7 @@ class Container extends Component {
 
     render() {
         const { travel } = this.props;
-        return <UserTravelDetail {...this.state} travel={travel} />
+        return <UserTravelDetail {...this.state} {...this.props} travel={travel} />
     }
 }
 

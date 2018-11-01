@@ -3,6 +3,7 @@ import { Timeline, Event } from "react-timeline-scribble";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
 import ReactModal from "react-modal";
+import { Button } from "reactstrap";
 
 const TimeLine = props => {
   if (props.loading) {
@@ -14,10 +15,10 @@ const TimeLine = props => {
 
 const MapToTimeline = props => (
   <div className="timeline">
-    <div className="timline-description">추억하기</div>
+    <div className="timline-description"> 추억하기 </div>{" "}
     {props.feed.filter(travel => travel.status === "추억하기").map(travel => (
       <RenderTimeLine {...travel} key={travel.id} />
-    ))}
+    ))}{" "}
   </div>
 );
 
@@ -26,7 +27,14 @@ class RenderTimeLine extends Component {
     super();
     this.state = {
       showModal: false,
-      plan: ""
+      plan: {
+        title: undefined,
+        content: undefined,
+        travel_region: undefined,
+        travel_day: undefined,
+        price: undefined,
+        plan_images: [{}]
+      }
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -42,7 +50,9 @@ class RenderTimeLine extends Component {
   }
 
   handleCloseModal() {
-    this.setState({ showModal: false });
+    this.setState({
+      showModal: false
+    });
   }
 
   render() {
@@ -65,11 +75,12 @@ class RenderTimeLine extends Component {
                 alt="temp"
               />
               <br />
-            </Event>
-          </Timeline>
-        </div>
+            </Event>{" "}
+          </Timeline>{" "}
+        </div>{" "}
         <div className="timeline-content__right">
           <div className="timeline-image-wrapper">
+            {" "}
             {this.props.travel_plan.map(plan => (
               <div>
                 <img
@@ -83,25 +94,47 @@ class RenderTimeLine extends Component {
                   width="100"
                   height="100"
                   onClick={() => this.handleOpenModal(plan)}
-                />
+                />{" "}
               </div>
             ))}
-
             <ReactModal
               isOpen={this.state.showModal}
               ariaHideApp={false}
               contentLabel="Minimal Modal Example"
+              className="Modal"
+              overlayclassName="Overlay"
             >
-              <div>
-                {this.state.plan.title}
-                {this.state.plan.travel_day}
-                {this.state.plan.travel_region}
-              </div>
-
-              <button onClick={this.handleCloseModal}>Close Modal</button>
-            </ReactModal>
-          </div>
-        </div>
+              <div className="Modal-layout">
+                <div className="Modal-layout__wrapper">
+                  <div className="Modal-header">
+                    <img
+                      className="Modal-image"
+                      src={
+                        this.state.plan.plan_images[0]
+                          ? this.state.plan.plan_images[0].file
+                          : require("images/2-(150x150).jpg")
+                      }
+                      alt="temp"
+                    />
+                  </div>
+                  <div className="Modal-content">
+                    <div className="Modal-context">
+                      <h1> 제목: {this.state.plan.title} </h1>{" "}
+                      <h1> 날짜: {this.state.plan.travel_day} </h1>{" "}
+                      <h1> 장소: {this.state.plan.travel_region} </h1>{" "}
+                      <p className="Modal-context__content"> {this.state.plan.content} </p>
+                      가격: {this.state.plan.price}{" "}
+                    </div>
+                  </div>{" "}
+                </div>{" "}
+                <Button onClick={this.handleCloseModal} className="Modal-Close">
+                  {" "}
+                  닫기{" "}
+                </Button>{" "}
+              </div>{" "}
+            </ReactModal>{" "}
+          </div>{" "}
+        </div>{" "}
       </div>
     );
   }

@@ -91,7 +91,6 @@
 
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: space-between;
                 max-height: 500px;
                 overflow: scroll;
                 
@@ -99,7 +98,7 @@
                     margin: 10px;
                     //세부계획 이미지스크롤 디자인
                     border: 1px solid #eaf1f9;
-                    
+
                     &:hover {
                         box-shadow: 2px 2px 2px 2px rgba(148, 146, 146, 0.445) !important;
                     }
@@ -155,4 +154,87 @@
 .Selectable .DayPicker-Day--end {
     border-top-right-radius: 50% !important;
     border-bottom-right-radius: 50% !important;
+}
+
+.Modal {
+    position: absolute;
+    float: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #e0eaf6;
+    max-width: 1000px;
+    height: auto;
+    @include boxBorder(no);
+}
+
+.Overlay {
+    background-color: '#00000075'
+}
+
+// .Modal-layout {
+//     .Modal-layout__wrapper {
+//         .Modal-content {
+            
+//             .Modal-context {
+//                 display: flex;
+//                 // flex-direction: column;
+//                 text-align: center;
+//                 padding: 10px;
+//                 font-size: 20px;
+
+//                 .Modal-context__content {
+//                     overflow-y: scroll;
+//                     max-height: 300px;
+//                     font-size: 16px;
+//                     line-height: 130%;
+//                 }
+//             }
+//         }
+//     }
+//     .Modal-Close {
+//         position: absolute;
+//         top: 10px;
+//         left: 10px;
+//         display: inline-block;
+//         font-size: 24px;
+//         background: #ffffff60;
+//     }
+// }
+
+.Modal-layout { 
+    width: 1000px;
+    // height: 600px;
+    // max-width: 800px;
+    // max-height: 600px;
+}
+
+.Modal-layout__wrapper {
+    display: flex;
+}
+
+.Modal-header {
+    width: 500px;
+    height: 500px;
+}
+
+.Modal-context {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 500px;
+}
+
+.Modal-context__content {
+     overflow-y: scroll;
+     max-height: 300px;
+     font-size: 15px;
+     line-height: 140%;
+}
+
+.Modal-image {
+    width: 500px;
+    height: auto;
+    max-height: 400px;
 }
