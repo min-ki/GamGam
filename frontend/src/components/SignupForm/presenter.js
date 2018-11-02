@@ -5,13 +5,13 @@ import formStyles from "shared/formStyles.scss";
 // signup Form
 const SignupForm = (props, context) => (
   <div className={formStyles.formComponent}>
-    <h3 className={formStyles.signupHeader}>{context.t("Sign up to see photos and videos from your friends.")}</h3>
+    <h3 className={formStyles.signupHeader}>{context.t("친구의 사진과 동영상을 보려면 등록하십시오.")}</h3>
     <span className={formStyles.divider}>{context.t("or")}</span>
     <form className={formStyles.form} onSubmit={props.handleSubmit}>
       <input 
         name="email" 
         type="email" 
-        placeholder={context.t("Email")}
+        placeholder={context.t("이메일")}
         value={props.emailValue} 
         className={formStyles.textInput}
         onChange={props.handleInputChange}
@@ -19,7 +19,7 @@ const SignupForm = (props, context) => (
       <input 
         name="name" 
         type="text" 
-        placeholder={context.t("Name")}
+        placeholder={context.t("아이디")}
         value={props.nameValue} 
         className={formStyles.textInput}
         onChange={props.handleInputChange}
@@ -28,22 +28,22 @@ const SignupForm = (props, context) => (
         name="username" 
         type="username" 
         value={props.usernameValue}
-        placeholder={context.t("Username")} 
+        placeholder={context.t("닉네임")} 
         className={formStyles.textInput} 
         onChange={props.handleInputChange}
       />
       <input 
         name="password" 
         type="password" 
-        placeholder={context.t("Password")}
+        placeholder={context.t("비밀번호")}
         value={props.passwordValue} 
         className={formStyles.textInput} 
         onChange={props.handleInputChange}
       />
-      <input type="submit" value={context.t("Sign up")} className={formStyles.button} onChange={props.handleSubmit} />
+      <input type="submit" value={context.t("회원가입")} className={formStyles.button} onChange={props.handleSubmit} />
     </form>
     <p className={formStyles.terms}>
-        {context.t("By signing up, you agree to our")} <span>{context.t("Terms & Privacy Policy")}</span>.
+        {context.t("가입하면 당사의 이용약관 및 개인정보")} <br/> <span>{context.t("보호정책에 동의합니다.")}</span>
     </p>
   </div>
 );
