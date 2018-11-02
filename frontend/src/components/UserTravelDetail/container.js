@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import TravelDetail from "./presenter";
+import UserTravelDetail from './presenter';
 
 class Container extends Component {
     state = {
-        loading: true
+        loading: true   
     };
 
     static propTypes = {
@@ -16,7 +16,6 @@ class Container extends Component {
         if(!this.props.travel){
             getTravelDetail(TravelId);
         } else if(!this.props.travel.id !== TravelId) {            
-            localStorage.removeItem('gallery_img'); // 새로고침시 이미지 사라지는 문제 해결
             getTravelDetail(TravelId);
         } else {
             this.setState({
@@ -24,18 +23,18 @@ class Container extends Component {
             });
         }
     }
-
+    
     componentWillReceiveProps = nextProps => {
-        if(nextProps.travel){
+        if (nextProps.travel) {
             this.setState({
                 loading: false,
             });
         }
     }
 
-    render(){
+    render() {
         const { travel } = this.props;
-        return <TravelDetail {...this.state} travel={travel} />;
+        return <UserTravelDetail {...this.state} travel={travel} />
     }
 }
 

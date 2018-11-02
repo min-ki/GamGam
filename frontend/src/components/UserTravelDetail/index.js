@@ -1,12 +1,16 @@
 import { connect } from "react-redux";
 import Container from "./container";
-import { actionCreators as travelActions } from "redux/modules/travel";
+import { actionCreators as travelActions } from "redux/modules/travel"; 
 
 const mapStateToProps = (state, ownProps) => {
+  
   const TravelId = ownProps.match.params.id;
+  
   const {
     travels: { travel }
   } = state;
+  
+  console.log(TravelId, travel);
 
   return {
     TravelId,
@@ -15,14 +19,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    getTravelDetail: () => {
-      dispatch(travelActions.getTravelDetail(ownProps.match.params.id));
+    return {
+        getTravelDetail: () => {
+            dispatch(travelActions.getTravelDetail(ownProps.match.params.id));
+        }
     }
-  };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Container);
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

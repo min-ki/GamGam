@@ -5,6 +5,7 @@
   justify-content: center;
   margin-bottom: 60px;
   box-sizing: border-box;
+
   @include breakpoint("phone") {
     margin-bottom: 0;
   }
@@ -91,6 +92,7 @@
 
       .nav-icon {
         .link {
+          color: black;
           .menu {
             display: none;
             // flex-direction: column;

@@ -30,6 +30,7 @@ class Common(Configuration):
         'django_filters',            # for filtering rest endpoints
         'taggit',  # Tags for the photos
         'taggit_serializer',  # tag
+        'imagekit',  # thumbnail
         
         # Your apps
         'GamGam.users',
@@ -70,8 +71,8 @@ class Common(Configuration):
 
     # General
     APPEND_SLASH = False
-    TIME_ZONE = 'UTC'
-    LANGUAGE_CODE = 'en-us'
+    TIME_ZONE = 'Asia/Seoul'
+    LANGUAGE_CODE = 'ko-kr'
     # If you set this to False, Django will make some optimizations so as not
     # to load the internationalization machinery.
     USE_I18N = False
@@ -223,5 +224,5 @@ class Common(Configuration):
     ACCOUNT_EMAIL_VERIFICATION = 'optional'  # 'mandatory'
 
     ACCOUNT_ALLOW_REGISTRATION = os.getenv('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-    ACCOUNT_ADAPTER = 'GamGam.users.adapters.AccountAdapter'
-    SOCIALACCOUNT_ADAPTER = 'GamGam.users.adapters.SocialAccountAdapter'
+    # ACCOUNT_ADAPTER = 'GamGam.users.adapters.AccountAdapter'
+    # SOCIALACCOUNT_ADAPTER = 'GamGam.users.adapters.SocialAccountAdapter'

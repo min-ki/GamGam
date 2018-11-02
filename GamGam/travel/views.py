@@ -1,18 +1,11 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-from rest_framework.schemas import SchemaGenerator
-from rest_framework_swagger import renderers
-from rest_framework import serializers, viewsets
+from rest_framework import status
+from rest_framework import serializers
 from . import models, serializers
-
 import requests, json
-
-# todo: Travel Feed만들기
-# todo: Login 필요 없음
 
 # GET /travel/
 class TravelListView(APIView):
@@ -23,7 +16,7 @@ class TravelListView(APIView):
         """
         user = request.user
         
-        travel_list = models.Travel.objects.all()
+        travel_list = models.Travel.objects.filter(status="2") # 추억하기 게시물만 필터링
         serializer = serializers.TravelSerializer(travel_list, many=True, context={'request' : request})
 
         return Response(serializer.data)
@@ -33,12 +26,14 @@ class TravelListView(APIView):
         여행 계획 생성
         """
         user = request.user
-        serializer = serializers.CreateTravelSerializer(data=request.data)
+        serializer = serializers.TravelSerializer(data=request.data)
 
         if serializer.is_valid():
-            serializer.save(owner=user, status="1")
+            serializer.save(owner=user, status="0")
             return Response(data=serializer.data, status=201)
-            
+        else:
+            return Response(data=serializer.errors, status=400)
+
 class TravelDetailView(APIView):
 
     def get(self, request, pk, format=None):
@@ -59,13 +54,10 @@ class TravelDetailView(APIView):
         """
         user = request.user
 
-        travel = models.Travel.objects.get(
-            owner=user,
-            pk=pk
-        )
+        travel = models.Travel.objects.get(pk=pk)
 
-        travel.title = request.data['title']
-        travel.status = request.data['status']
+        # travel.title = request.data['title']
+        # travel.status = request.data['status']
 
         serializer = serializers.UpdateTravelSerializer(travel, data=request.data)
 
@@ -97,7 +89,6 @@ class TravelDetailView(APIView):
 class TravelPlanListView(APIView):
 
     def get(self, request, pk, format=None):
-    
         """
         여행지 세부 계획 리스트
         """
@@ -114,9 +105,13 @@ class TravelPlanListView(APIView):
         여행지 세부 계획 생성
         """
         user = request.user
-        travel = models.Travel.objects.get(pk=pk)
 
-        serializer = serializers.CreateTravelPlanSerializer(data=request.data)
+        try:
+            travel = models.Travel.objects.get(pk=pk)
+        except models.Travel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.TravelPlanSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save(travel=travel)
@@ -124,15 +119,36 @@ class TravelPlanListView(APIView):
         else:
             return Response(data=serializer.errors, status=304)
 
-class TestView(APIView):
+class TravelPlanDetailView(APIView):
     
-    def get(self, request, format=None):
-        user = request.user
-        travel = models.Travel.objects.all()
+    def get(self, request, plan_pk, format=None):
+        """
+        여행지 세부 계획 상세보기
+        """
+        try:
+            plan = get_object_or_404(models.TravelPlan, plan_pk=plan_pk)
+        except models.TravelPlan.DoesNotExist:
+            raise Http404("Not founded")
 
-        serializer = serializers.UserProfileTravelSerializer(travel, many=True)
+        serializer = serializers.TravelPlanSerializer(plan)
+        return Response(serializer.data)
 
-        return Response(data=serializer.data)
+    def put(self, request, pk, plan_pk, format=None):
+        """
+        여행지 세부 계획 업데이트
+        """
+        try:
+            plan = models.TravelPlan.objects.get(id=plan_pk)
+        except models.TravelPlan.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        serializer = serializers.UpdateTravelPlanSerializer(plan, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save(plan=plan)
+            return Response(data=serializer.data, status=201)
+        else:
+            return Response(data=serializer.errors, status=304)
 
 class TravelApi(APIView):
 

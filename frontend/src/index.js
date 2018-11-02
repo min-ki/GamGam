@@ -9,7 +9,7 @@ import { translations } from "translations";
 
 ReactDOM.render(
   <Provider store={store}>
-      <I18n translations={translations} initialLang="en" fallbackLang="en">
+      <I18n translations={translations} initialLang="ko" fallbackLang="ko">
         <ConnectedRouter history={history}>
           <App />
         </ConnectedRouter>
