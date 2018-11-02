@@ -12,7 +12,6 @@ import Logout from 'components/Logout';
 import TravelPlan from 'components/TravelPlan';
 import UserTravelList from 'components/UserTravelList';
 
-
 const App = props => [
 	// Nav,
 	props.isLoggedIn ? <Navigation key={1} /> : null,
@@ -43,6 +42,7 @@ const PublicRoute = props => (
 		<Route path="/" component={Auth} /> 
 		<Route path="/login" component={Auth} /> 
 	</Switch>	
+	
 )
 
 export default App;
