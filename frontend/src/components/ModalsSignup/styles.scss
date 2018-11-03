@@ -2,15 +2,21 @@
     width: 100%;
     max-width: $max-page-width;
     min-height: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     position: relative;
     z-index: 100;
 
+    /*반응형 추가*/
+    @include breakpoint("phone") {
+        background-color: white;
+    }
+    @include breakpoint("tablet") {
+        background-color: white;
+    }
+    
     .whiteBox {
         text-align: center;
         padding: 15px;
@@ -20,7 +26,6 @@
         @include boxBorder(no);
         @include breakpoint("phone") {
             background-color: transparent;
-            border: 0;
         }
 
         .change-link {
@@ -38,6 +43,11 @@
         margin-bottom: 10px;
         padding: 0 40px;
         padding-top: 30px;
+
+        /*반응형추가*/
+        @include breakpoint("phone") {
+            width: 300px;
+        }
 
         img {
             height: 60px;
