@@ -5,7 +5,6 @@ import Modal from 'react-modal';
 import ModalsSignin from 'components/ModalsSignin';
 import ModalsSignup from 'components/ModalsSignup';
 
-
 const texts = [
   "둘러보세요",
   "계획하세요",
@@ -15,6 +14,7 @@ const texts = [
 ];
 
 class Card extends Component {
+
   state = {
     textIndex: 0,
     textFastIndex: 0,
@@ -22,6 +22,11 @@ class Card extends Component {
     modalIsOpen_1 : false,
     modalIsOpen_2 : false,
   };
+
+  /* Modal 클릭시 Warning 문제 해결 */
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
 
   componentDidMount() {
     setInterval(() => {
@@ -38,7 +43,7 @@ class Card extends Component {
 
   openModal_1=()=>{
     this.setState({
-      modalIsOpen_1: true
+      modalIsOpen_1: true,
     });
   }
 
