@@ -1,75 +1,85 @@
-# GamGam
+# 감성을 감상하다(감감)
 
-[![Build Status](https://travis-ci.org/min-ki/GamGam.svg?branch=master)](https://travis-ci.org/min-ki/GamGam)
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
+###### 감감은 사용자에게 여행을 기록, 추억,공유 하여 만들어진 여행정보를 제공하는 웹서비스 입니다. ######
 
-Its all about a Weissman score > 5.0. Check out the project's [documentation](http://min-ki.github.io/GamGam/).
+# 사용 기술
 
-# Prerequisites
+* #### Frontend ####
 
-- [Docker](https://docs.docker.com/docker-for-mac/install/)  
-- [Travis CLI](http://blog.travis-ci.com/2013-01-14-new-client/)
-- [Heroku Toolbelt](https://toolbelt.heroku.com/)
+  * HTML
 
-# Local Development
+  * CSS
+  * JavaScript
+  * Yarn
 
-Start the dev server for local development:
-```bash
-docker-compose up
-```
+- #### Backend ####
 
-Run a command inside the docker container:
+  * Docker
 
-```bash
-docker-compose run --rm web [command]
-```
+  * Django
+  * Djnago rest_framework
+  * Djangorestframework-jwt
+  * Python
 
-# Continuous Deployment
+--------------------------------------------------------------------
 
-Deployment is automated via Travis. When builds pass on the master or qa branch, Travis will deploy that branch to Heroku. Follow these steps to enable this feature.
-
-Initialize the production server:
-
-```
-heroku create GamGam-prod --remote prod && \
-    heroku addons:create newrelic:wayne --app GamGam-prod && \
-    heroku addons:create heroku-postgresql:hobby-dev --app GamGam-prod && \
-    heroku config:set DJANGO_SECRET_KEY=`openssl rand -base64 32` \
-        DJANGO_AWS_ACCESS_KEY_ID="Add your id" \
-        DJANGO_AWS_SECRET_ACCESS_KEY="Add your key" \
-        DJANGO_AWS_STORAGE_BUCKET_NAME="GamGam-prod" \
-        DJANGO_CONFIGURATION="Production" \
-        DJANGO_SETTINGS_MODULE="GamGam.config" \
-        --app GamGam-prod
-```
-
-Initialize the qa server:
-
-```
-heroku create GamGam-qa --remote qa && \
-    heroku addons:create newrelic:wayne --app GamGam-qa && \
-    heroku addons:create heroku-postgresql:hobby-dev --app GamGam-qa && \
-    heroku config:set DJANGO_SECRET_KEY=`openssl rand -base64 32` \
-        DJANGO_AWS_ACCESS_KEY_ID="Add your id" \
-        DJANGO_AWS_SECRET_ACCESS_KEY="Add your key" \
-        DJANGO_AWS_STORAGE_BUCKET_NAME="GamGam-qa" \
-        DJANGO_CONFIGURATION="Production" \
-        DJANGO_SETTINGS_MODULE="GamGam.config" \
-        --app GamGam-qa
-```
-
-Securely add your Heroku credentials to Travis so that it can automatically deploy your changes:
+# 전체 설치 과정
 
 ```bash
-travis encrypt HEROKU_AUTH_TOKEN="$(heroku auth:token)" --add
+$ git clone https://github.com/min-ki/GamGam.git
+$ cd GamGam
+$ git remote add GamGam https://github.com/min-ki/GamGam.git
+$ docker-compose up
+$ Yarn 
+$ Yarn start
 ```
 
-Commit your changes and push to master and qa to trigger your first deploys:
+---------------------------------------
+
+**프로젝트 생성**
+
+* 프로젝트 폴더를 만들고 터미널을 열어 프로젝트를 생성합니다
 
 ```bash
-git commit -a -m "ci(travis): add Heroku credentials" && \
-git push origin master:qa && \
-git push origin master
+$ git clone https://github.com/min-ki/GamGam.git
 ```
 
-You're now ready to continuously ship! ✨ 💅 🛳
+------------------------------------------------------------------
+
+**디렉토리 이동**
+
+* GamGam 디렉토리 이동
+
+```bash
+$ cd GamGam
+```
+
+---------------------------
+
+##### 저장소 지정 #####
+
+* 로컬과 원격 저장소를 연결합니다
+
+~~~bash
+$ git remote add GamGam https://github.com/min-ki/GamGam.git
+~~~
+
+-----------------------------------------------
+
+##### 작업 환경 설치
+
+1. **docker** 를 이용하여 모든 개발환경을 설치합니다
+
+~~~bash
+$ docker-compose up
+~~~
+
+2. **Yarn** 를 설치합니다 
+
+~~~bash
+$ Yarn
+$ Yarn start
+~~~
+
+------------------------------------
+

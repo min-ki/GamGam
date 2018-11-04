@@ -1,0 +1,56 @@
+.modalContainer {
+    width: 100%;
+    max-width: $max-page-width;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+
+    /*반응형 추가*/
+    @include breakpoint("phone") {
+        background-color: white;
+    }
+    @include breakpoint("tablet") {
+        background-color: white;
+    }
+
+    .whiteBox {
+        text-align: center;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+
+        @include boxBorder(no);
+        @include breakpoint("phone") {
+            background-color: transparent;
+        }
+
+        .change-link {
+            color: $light-blue;
+            cursor: pointer;
+        }
+        p {
+            margin: 15px;
+        }
+    }
+
+    .formBox {
+        margin: 0 auto;
+        width: 400px;
+        margin-bottom: 10px;
+        padding: 0 40px;
+        padding-top: 30px;
+
+        /*반응형추가*/
+        @include breakpoint("phone") {
+            width: 300px;
+        }
+
+        img {
+            height: 60px;
+        }
+    }
+}

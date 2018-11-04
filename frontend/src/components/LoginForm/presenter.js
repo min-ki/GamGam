@@ -8,7 +8,7 @@ const LoginForm = (props, context) => (
     <form className={formStyles.form} onSubmit={props.handleSubmit}>
       <input 
         type="text" 
-        placeholder={context.t("Username")} 
+        placeholder={context.t("아이디")} 
         className={formStyles.textInput}
         value={props.usernameValue}
         onChange={props.handleInputChange}
@@ -16,17 +16,17 @@ const LoginForm = (props, context) => (
       />    
       <input 
         type="password" 
-        placeholder={context.t("Password")} 
+        placeholder={context.t("비밀번호")} 
         className={formStyles.textInput} 
         value={props.passwordValue}
         onChange={props.handleInputChange}
         name="password"
       />
 
-      <input type="submit" value={context.t("Log in")} className={formStyles.button} />    
+      <input type="submit" value={context.t("로그인")} className={formStyles.button} />    
     </form>
     <span className={formStyles.divider}>{context.t("or")}</span>
-    <span className={formStyles.forgotLink}>{context.t("Forgot password?")}</span>
+    <span className={formStyles.forgotLink}>{context.t("비밀번호 찾기")}</span>
   </div>
 );
 

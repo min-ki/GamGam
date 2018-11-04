@@ -7,12 +7,13 @@ import Navigation from "components/Navigation";
 import Auth from "components/Auth";
 import Logout from "components/Logout";
 import Feed from "components/Feed";
-import TravelDetail from "components/TravelDetail";
-import TravelPlan from "components/TravelPlan";
-import UserTravelList from "components/UserTravelList";
+import TravelDetail from 'components/TravelDetail';
+import TravelPlan from 'components/TravelPlan';
+import UserTravelList from 'components/UserTravelList';
 import UserTravelDetail from "components/UserTravelDetail";
 import TimeLine from "components/TimeLine";
 import Footer from "components/Footer";
+
 
 const App = props => [
   // Nav,
@@ -40,11 +41,12 @@ const PrivateRoute = props => (
 );
 
 const PublicRoute = props => (
-  <Switch>
-    {/* 첫 메인 페이지 컴포넌트 제작하기 */}
-    <Route path="/" component={Auth} />
-    <Route path="/login" component={Auth} />
-  </Switch>
-);
+	<Switch>
+		{/* 첫 메인 페이지 컴포넌트 제작하기 */}
+		<Route path="/" component={Auth} /> 
+		<Route path="/login" component={Auth} /> 
+	</Switch>	
+	
+)
 
 export default App;
