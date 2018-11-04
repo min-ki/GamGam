@@ -2,19 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 import { Link } from 'react-router-dom';
+import TravelActions from "components/TravelActions";
 
 const FeedTravel = (props, context) => {
     return (
         <div className="feed-photo">
-            <Link to={`/feed/${props.id}`} className={styles.detailLink}>
                 <div className="feed-wrapper">
-                    <h1 className="feed-header">{props.title}</h1>
+                    <h1 className="feed-header">
+                        {props.title}
+                        <div className="feed-like_button">
+                            <TravelActions 
+                                number={props.like_count} 
+                                isLiked={props.is_liked} 
+                                travelId={props.id}
+                                key={props.id}
+                            />
+                        </div>
+                    </h1>
+                <Link to={`/feed/${props.id}`} className={styles.detailLink}>
                     <div className="feed-body">
                         <FeedImage className="feed-image" img={props.main_image} />
                         <FeedContent className="feed-content" {...props} />
                     </div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </div>
     )
 };
@@ -25,10 +36,10 @@ const FeedImage = (props) => (
 
 const FeedContent = (props) => (
     <div className="feed-content">
-        <p className="feed-content-attraction">
-            {props.travel_region} 
+        <div className="feed-content__header">
+            <p className="feed-content-attraction">{props.travel_region}</p>
             <p className="feed-content-duration">{props.start_at} - {props.end_at} </p>
-        </p>
+        </div>
     
       <p className="feed-content-travel_region__header">다녀온 곳</p>
       <div className="feed-content-travel_region">{props.travel_plan.map((plan, idx) => <TravelPlanRegion travel_region={plan.travel_region} key={idx} />)}</div>
@@ -53,6 +64,8 @@ FeedTravel.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
+    like_count: PropTypes.number.isRequired,
+    is_liked: PropTypes.bool.isRequired,
 };
 
 export default FeedTravel;

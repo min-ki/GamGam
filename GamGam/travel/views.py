@@ -55,10 +55,6 @@ class TravelDetailView(APIView):
         user = request.user
 
         travel = models.Travel.objects.get(pk=pk)
-
-        # travel.title = request.data['title']
-        # travel.status = request.data['status']
-
         serializer = serializers.UpdateTravelSerializer(travel, data=request.data)
 
         if serializer.is_valid():
@@ -160,3 +156,68 @@ class TravelApi(APIView):
         data = json.loads(response.text)
         print(data)
         return Response(data=data['response']['body'])        
+
+
+class LikeTravel(APIView):
+    
+    # GET /travel/(?<P>travel_id)/likes
+    def get(self, request, travel_id, format=None):
+
+        likes = models.Like.objects.filter(travel__id=travel_id)    
+        like_creator_ids = likes.values('creator_id')
+        users = user_models.User.objects.filter(id__in=like_creator_ids)
+
+        serializer = user_serializers.ListUserSerializer(users, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    # POST /travel/(?<P>travel_id)/likes
+    def post(self, request, travel_id, format=None):
+
+        user = request.user
+        
+        try:
+            found_travel = models.Travel.objects.get(id=travel_id)
+        except models.Travel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        try:
+            preexisiting_like = models.Like.objects.get(
+                creator=user,
+                travel=found_travel
+            ) 
+
+            return Response(status=status.HTTP_304_NOT_MODIFIED)
+            
+        except models.Like.DoesNotExist:
+            
+            new_like = models.Like.objects.create(
+                creator=user,
+                travel = found_travel
+            )
+
+            new_like.save()
+        
+            return Response(status=status.HTTP_201_CREATED)
+
+class UnLikeTravel(APIView):
+
+    def delete(self, request, travel_id, format=None):
+
+        user = request.user
+        
+        try:
+            found_travel = models.Travel.objects.get(id=travel_id)
+        except models.Travel.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            preexisiting_like = models.Like.objects.get(
+                creator=user,
+                travel=found_travel
+            )
+            preexisiting_like.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except models.Like.DoesNotExist:
+            return Response(status=status.HTTP_304_NOT_MODIFIED)

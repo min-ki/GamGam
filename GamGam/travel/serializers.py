@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Travel, TravelPlan, Image
+from .models import Travel, TravelPlan, Image, Like
 from GamGam.users import models as user_models
 from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 
@@ -31,7 +31,6 @@ class TravelPlanSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'price',
-            'travel',
             'travel_day',
             'travel_region',
             'plan_images',
@@ -59,6 +58,7 @@ class TravelSerializer(TaggitSerializer, serializers.ModelSerializer):
     travel_plan = TravelPlanSerializer(many=True) # 여행계획
     tags = TagListSerializerField() # 태그
     main_image = serializers.FileField(read_only=True)
+    is_liked = serializers.SerializerMethodField()  # 시리얼라이저의 함수
 
     class Meta:
         model = Travel
@@ -74,8 +74,10 @@ class TravelSerializer(TaggitSerializer, serializers.ModelSerializer):
             'tags',
             'start_at',
             'end_at',
+            'is_liked',
+            'like_count',
         )
-
+        
     def create(self, validate_data):
         travel_plan = validate_data.pop('travel_plan') # 여행 계획 리스트
         tags = validate_data.pop('tags') # 태그 리스트 
@@ -88,6 +90,17 @@ class TravelSerializer(TaggitSerializer, serializers.ModelSerializer):
             travel.travel_plan.add(plan)
             print(travel)
         return travel
+
+    # 시리얼라이저 함수 구현체
+    def get_is_liked(self, obj):
+        if 'request' in self.context:
+            request = self.context['request']
+            try:
+                Like.objects.get(creator__id=request.user.id, travel__id=obj.id)  # obj는 현재 인스턴스의 이미지
+                return True
+            except Like.DoesNotExist:
+                return False
+        return False
 
 class UpdateTravelSerializer(serializers.ModelSerializer):
 

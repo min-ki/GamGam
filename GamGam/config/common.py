@@ -224,5 +224,3 @@ class Common(Configuration):
     ACCOUNT_EMAIL_VERIFICATION = 'optional'  # 'mandatory'
 
     ACCOUNT_ALLOW_REGISTRATION = os.getenv('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
-    # ACCOUNT_ADAPTER = 'GamGam.users.adapters.AccountAdapter'
-    # SOCIALACCOUNT_ADAPTER = 'GamGam.users.adapters.SocialAccountAdapter'

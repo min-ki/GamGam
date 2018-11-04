@@ -16,9 +16,15 @@
 
         .feed-header {
             color: black;
-            padding: 20px;
+            padding: 15px;
             font-size: 1.5rem;
             @include boxBorder(no);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .feed-like_button {
+                // float: right;
+            }
         }
 
         .feed-body {
@@ -38,6 +44,11 @@
             height: 400px;
             min-width: 400px;
             color: black;
+
+            .feed-content__header {
+                display: flex;
+                align-items: flex-end;
+            }
 
             .feed-content-title,
             .feed-content-attraction,

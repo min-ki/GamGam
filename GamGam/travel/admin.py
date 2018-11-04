@@ -1,9 +1,12 @@
 from django.contrib import admin
-from .models import Travel, TravelPlan, Image
+from .models import Travel, TravelPlan, Image, Like
 
 # todo: 여행 리스트 세부내역 관리자 페이지 만들기
 class ImageInline(admin.StackedInline):
     model = Image
+
+class LikeInline(admin.StackedInline):
+    model = Like
 
 class TravelPlanInline(admin.StackedInline):
     model = TravelPlan
@@ -15,4 +18,4 @@ class TravelPlanAdmin(admin.ModelAdmin):
 
 @admin.register(Travel)
 class TravelAdmin(admin.ModelAdmin):
-    inlines = [TravelPlanInline, ]
+    inlines = [TravelPlanInline, LikeInline, ]
