@@ -38,11 +38,10 @@ class TravelPlan extends Component {
       travel_plan: [
         {
           name: "",
-          region: "",
           content: "",
           price: null,
-          travel: null,
-          travel_day: null
+          travel_day: null,
+          travel_region: null
         }
       ]
     };
@@ -78,6 +77,7 @@ class TravelPlan extends Component {
   };
 
   handleRegionChange = travel_region => {
+    console.log(travel_region);
     this.setState({ travel_region });
   };
 
@@ -120,30 +120,6 @@ class TravelPlan extends Component {
       start_at = `${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}`; // 여행 시작일자
       end_at = `${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`; // 여행 종료일자
     }
-
-    // if(travel_region)
-    // travel_plan['travel'] = 100;
-    // travel_plan['travel_day'] = "2018-10-13";
-
-    // todo: title
-    // todo: status : "시작하기"
-    // todo: owner : { username }
-    // todo: price
-    // todo: travel_plan
-    // todo: travel_region.label
-    // todo: tags
-    // todo: start_at
-    // todo: end_at
-
-    // const travel_plan = [
-    //   {
-    //     title: "한식여행",
-    //     content: "된장찌개, 김치찌개",
-    //     price: "1000",
-    //     travel: "111",
-    //     travel_day: "2018-9-13"
-    //   }
-    // ];
     
     fetch("/travel/", {
       method: "POST",
@@ -241,7 +217,6 @@ class TravelPlan extends Component {
                 value={travel_region}
                 onChange={this.handleRegionChange}
                 options={nations}
-                required
               />
               {/* {travel_region ? (
                 <Select
@@ -295,12 +270,11 @@ class TravelDetailPlan extends Component {
     detail_travels: [
       {
         title: "",
-        region: "",
         content: "",
         price: null,
         travel_day: null,
-        selectedDays: null,
-        travel: 158
+        travel_region: null,
+        selectedDays: null
       }
     ],
   };
@@ -332,6 +306,7 @@ class TravelDetailPlan extends Component {
      
     new_detail_travels['travel_day'] = this.state.travel_day;
 
+
     this.props.handleTravelPlans(this.state.detail_travels);
 
     this.setState({ detail_travels: new_detail_travels });
@@ -346,8 +321,8 @@ class TravelDetailPlan extends Component {
           content: "",
           price: null,
           travel_day: null,
-          selectedDays: null,
-          travel: 158
+          travel_region: null,
+          selectedDays: null
         }
       ])
     });
@@ -359,13 +334,6 @@ class TravelDetailPlan extends Component {
         (s, sidx) => idx !== sidx
       )
     });
-  };
-
-  handleSubmit = idx => evt => {
-    evt.preventDefault();
-    // const user_token = localStorage.getItem("jwt");
-    const { detail_travels } = this.state;
-    console.log(detail_travels);
   };
 
   render() {
@@ -405,9 +373,9 @@ class TravelDetailPlan extends Component {
                   <Input
                     id="travel_region"
                     type="text"
-                    name="region"
+                    name="travel_region"
                     placeholder="여행 지역"
-                    value={detail_travel.region}
+                    value={detail_travel.travel_region}
                     onChange={this.handleChange(idx)}
                     className="plan-travel-detail-title detail-content"
                   />

@@ -112,16 +112,18 @@ class RenderTimeLine extends Component {
                       src={
                         this.state.plan.plan_images[0]
                           ? this.state.plan.plan_images[0].file
-                          : require("images/2-(150x150).jpg")
+                          : require("images/2-(400x400).jpg")
                       }
                       alt="temp"
                     />
                   </div>
                   <div className="Modal-content">
                     <div className="Modal-context">
-                      <h1> 제목: {this.state.plan.title} </h1>{" "}
-                      <h1> 날짜: {this.state.plan.travel_day} </h1>{" "}
-                      <h1> 장소: {this.state.plan.travel_region} </h1>{" "}
+                      <div className="Modal-context_header__wrapper">
+                        <h1 className="Modal-context_header"> 제목: {this.state.plan.title} </h1>{" "}
+                        <h1 className="Modal-context_header__date"> 날짜: {this.state.plan.travel_day} </h1>{" "}
+                      </div>
+                      <h1 className="Modal-context_spot"> 장소: {this.state.plan.travel_region} </h1>{" "}
                       <p className="Modal-context__content"> {this.state.plan.content} </p>
                       가격: {this.state.plan.price}{" "}
                     </div>
