@@ -1,4 +1,5 @@
 .mainContainer{
+    height: 100%;
     display: flex;
     flex-direction: column;
     max-width: 1000px;
@@ -37,7 +38,7 @@
     .subContainer_2{
         display:flex;
         flex-direction: column;
-        margin-top: 50px;
+        margin-top: 150px;
 
         .button{
             outline:none;
