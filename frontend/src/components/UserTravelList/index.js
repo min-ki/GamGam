@@ -6,9 +6,7 @@ import { actionCreators as UserActions } from "redux/modules/user";
 // users/1/plans/  사용자의 여행계획 리스트 받아오기 
 
 const mapStateToProps = (state, ownProps) => {
-
-    // const userId = state.user.userId;
-    
+        
     const { user: { userId, user_plan } } = state;
 
     return {

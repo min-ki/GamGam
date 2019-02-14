@@ -10,8 +10,6 @@ const mapStateToProps = (state, ownProps) => {
     travels: { travel }
   } = state;
   
-  console.log(TravelId, travel);
-
   return {
     TravelId,
     travel

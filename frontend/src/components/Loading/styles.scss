@@ -1,4 +1,8 @@
 .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     .spinner{
         height: 32px;
         animation: spinner 1s steps(12) infinite;

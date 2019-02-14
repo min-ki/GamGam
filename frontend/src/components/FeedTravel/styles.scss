@@ -1,7 +1,7 @@
 .feed-photo {
     @include boxBorder(yes);
     display: flex;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 
     .feed-wrapper {
         display: flex;
@@ -121,10 +121,6 @@
         background-color: transparent;
         border: 1px solid #e6e6e6;
         margin-bottom: 30px;
-    }
-
-    &:last-child {
-        margin-bottom: 0;
     }
 
     .detail-link {

@@ -1,7 +1,19 @@
 .feed {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+
+    @include breakpoint("desktop-xl") {
+        width: 1700px !important;
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 }

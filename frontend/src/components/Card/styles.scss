@@ -3,12 +3,13 @@
     flex-direction: column;
     max-width: 1000px;
     margin: 0 auto;
+    margin-top: 100px;
     opacity: 1;
     z-index: 100;
 
     .logo{
         width: 200px;
-        height: 70px;
+        height: 100%;
         margin: 0 auto;
         margin-bottom: 50px;
         
@@ -35,7 +36,7 @@
     }
 
     .subContainer_2{
-        display:flex;
+        display: flex;
         flex-direction: column;
         margin-top: 50px;
 

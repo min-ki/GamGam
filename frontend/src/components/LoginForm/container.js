@@ -7,7 +7,8 @@ import LoginForm from "./presenter.js";
 class Container extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    message: ""
   };
   static propTypes = {
     usernameLogin: PropTypes.func.isRequired,

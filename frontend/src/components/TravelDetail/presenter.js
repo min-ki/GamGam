@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ImageGallery from "react-image-gallery";
 import styles from './styles.scss';
+import Loading from 'components/Loading';
 
 const TravelDetail = props => {
   if (props.loading) {
     return <LoadingFeed />;
-  } else if (props.travel) {
+  } else if (!props.loading) {
     return (
       <div>
         <div className="gallery-wrapper">
@@ -21,7 +22,7 @@ TravelDetail.propsTypes = {
   loading: PropTypes.bool.isRequired
 };
 
-const LoadingFeed = props => <div>{/* <Loading /> */}</div>;
+const LoadingFeed = props => <div><Loading /></div>;
 
 class MyComponent extends Component {
   constructor() {
@@ -32,10 +33,10 @@ class MyComponent extends Component {
       showBullets: true,
       showThumbnails: true,
       infinite: true,
-      showFullscreenButton: true,
-      showGalleryFullscreenButton: true,
-      showPlayButton: true,
-      showGalleryPlayButton: true,
+      showFullscreenButton: false,
+      showGalleryFullscreenButton: false,
+      showPlayButton: false,
+      showGalleryPlayButton: false,
       showNav: true,
       isRTL: false,
       slideDuration: 450,
@@ -67,11 +68,6 @@ class MyComponent extends Component {
       image_index: index
     });
   }
-
-  
-  componentDidMount() {
-  }
-
 
   componentDidUpdate() {
 
@@ -148,7 +144,14 @@ class MyComponent extends Component {
             <h1 className="gallery-image-title_content gallery-image-title_region">{travel_region}</h1>
             <h1 className="gallery-image-title_content gallery-image-title_date">{start_at} ~ {end_at}</h1>
           </div>
-          <ImageGallery ref={i => (this._imageGallery = i)} items={this.state.gallery_image} onClick={this._onImageClick.bind(this)} onScreenChange={this._onScreenChange.bind(this)} onSlide={this._onSlide.bind(this)} />
+          <ImageGallery 
+            ref={i => (this._imageGallery = i)} 
+            items={this.state.gallery_image} 
+            onClick={this._onImageClick.bind(this)} 
+            onScreenChange={this._onScreenChange.bind(this)} 
+            onSlide={this._onSlide.bind(this)}
+            showFullscreenButton={false}
+          />
         </div>
 
         <div>

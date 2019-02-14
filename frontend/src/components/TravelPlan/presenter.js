@@ -94,15 +94,11 @@ class TravelPlan extends Component {
   };
 
   handleTravelPlans = data => {
-
-    console.log(data);
-
     // travel_plan이라는 데이터에 값을 저장
     this.setState({ 
       travel_plan: data
     });
 
-    console.log(this.state.travel_plan);
   };
 
   handleSubmit = evt => {

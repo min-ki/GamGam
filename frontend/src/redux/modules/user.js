@@ -48,7 +48,7 @@ function usernameLogin(username, password){
                 dispatch(saveUserInfo(json.token, json.user.pk))
             }
         })
-        .catch(err => console.log(err));
+        .catch(err => err.json());
     }
 }
 

@@ -32,7 +32,7 @@ const RenderUserTravelList = props => {
                 <h1 className="UserTravelList-cost">비용 : {props.price} 원 </h1>
                 <h1 className="UserTravelList-region">지역 : {props.travel_region} </h1>
                 <Link to={`/travel/${props.id}`}>
-                <ButtonToolbar className="UserTravelList-button">수정</ButtonToolbar>
+                <ButtonToolbar className="UserTravelList-button">자세히 보기</ButtonToolbar>
                 </Link>
           </div>
         </div>

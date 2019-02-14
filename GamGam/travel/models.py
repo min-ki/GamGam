@@ -122,3 +122,13 @@ class Like(TimeStampedModel):
 
     creator = models.ForeignKey(user_models.User, on_delete=models.PROTECT, null=True)
     travel = models.ForeignKey(Travel, on_delete=models.PROTECT, null=True, related_name='travels')
+
+
+class Todo(TimeStampedModel):
+
+    """ Todo Model """
+
+    text = models.CharField(max_length=255)
+    checked = models.BooleanField(default=False)
+    creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
+    travel = models.ForeignKey(Travel, on_delete=models.CASCADE, related_name='travels_todo')

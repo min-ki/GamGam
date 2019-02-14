@@ -10,6 +10,9 @@ urlpatterns = [
     path('<int:pk>/', views.TravelDetailView.as_view(), name='detail'),
     path('<int:travel_id>/likes/', views.LikeTravel.as_view(), name='like_travel'),
     path('<int:travel_id>/unlikes/', views.UnLikeTravel.as_view(), name='like_travel'),
+    path('<int:travel_id>/todo/', views.TodoListView.as_view(), name='todo'),
+    path('<int:travel_id>/todo/<int:todo_id>/', views.TodoDetailView.as_view(), name='todo_detail'),
+    path('<int:travel_id>/upload/', views.MainImageView.as_view(), name='main_image'),
 
     # Travel Plan
     path('<int:pk>/plan/', views.TravelPlanListView.as_view(), name='plan'),

@@ -68,7 +68,7 @@ class Card extends Component {
   render() {
     return (
         <section className={styles.mainContainer}>
-          <img src={require("images/logo.png")} className={styles.logo}/>
+          <img src={require("images/login.png")} className={styles.logo}/>
 
           <div className={styles.subContainer_1}>
             <h1 className={styles.textStop}>여행을</h1>

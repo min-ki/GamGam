@@ -13,7 +13,7 @@ const Feed = props => {
 };
 
 const LoadingFeed = props => (
-  <div className={styles.feed}>
+  <div className="loading">
     <Loading />
   </div>
 );

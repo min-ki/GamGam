@@ -3,15 +3,25 @@ import { actionCreators as userActions } from "redux/modules/user";
 
 // actions
 const SET_FEED = "SET_FEED";
+const SET_TODO = "SET_TODO";
+
 const TRAVEL_DETAIL = "TRAVEL_DETAIL";
 const LIKE_TRAVEL = "LIKE_TRAVEL";
 const UNLIKE_TRAVEL = "UNLIKE_TRAVEL";
+
 // action creators
 function setFeed(feed){
     return {
         type: SET_FEED,
         feed
     };
+}
+
+function setTodo(todo) {
+    return {
+        type: SET_TODO,
+        todo
+    }
 }
 
 function TravelDetail(travel){

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Travel, TravelPlan, Image, Like
+from .models import Travel, TravelPlan, Image, Like, Todo
 from GamGam.users import models as user_models
 from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 
@@ -88,7 +88,6 @@ class TravelSerializer(TaggitSerializer, serializers.ModelSerializer):
             plan = TravelPlan.objects.create(**plan)
             plan.travel = travel
             travel.travel_plan.add(plan)
-            print(travel)
         return travel
 
     # 시리얼라이저 함수 구현체
@@ -103,13 +102,15 @@ class TravelSerializer(TaggitSerializer, serializers.ModelSerializer):
         return False
 
 class UpdateTravelSerializer(serializers.ModelSerializer):
+    # main_image = serializers.ImageField(use_url=True)
 
     # owner = serializers.ReadOnlyField()
 
     class Meta:
         model = Travel
         fields = (
-            'title', 
+            'title',
+            # 'main_image', 
             'status'
         )
 
@@ -144,4 +145,29 @@ class UserProfileTravelSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'status'
+        )
+
+class TodoSerializer(serializers.ModelSerializer):
+
+     class Meta:
+        model = Todo
+        fields = (
+            'id',
+            'text',
+            'checked'
+        )
+
+
+class MainImageUpdateSerializer(serializers.ModelSerializer):
+
+    """
+        메인 이미지를 처리하기위한 시리얼라이저
+    """
+
+    main_image = serializers.ImageField(use_url=True)
+
+    class Meta:
+        model = Travel
+        fields = (
+            'main_image',
         )

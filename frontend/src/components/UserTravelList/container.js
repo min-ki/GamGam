@@ -4,18 +4,32 @@ import UserTravelList from './presenter';
 class Container extends Component {
 
     state = {
-        loading: true
+        loading: true,
+        user_plan: [],
     };
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.state.user_plan !== nextState.user_plan) {
+            return true;
+        }
+        if(this.state.loading !== nextState.loading) {
+            return true;
+        }
+    }
 
     componentDidMount() {
-        const { userId, getUserPlanList } = this.props;
+        const {
+            userId,
+            getUserPlanList,
+            user_plan
+        } = this.props;
         
-        if (!this.props.user_plan) {
+        if (!user_plan) {
            getUserPlanList(userId); // Plan List
         } else {
             this.setState({
-                loading: false
+                loading: false,
+                user_plan
             });
         }
     }
