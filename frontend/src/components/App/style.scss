@@ -4,6 +4,7 @@
 
 body {
   height: 100%;
+  overflow-y: hidden; //화면에 스크롤바 지우기
   font-family: 'Noto Serif KR', sans-serif !important;
   background-color: $bg-color !important;
   font-size: $normal-font-size !important;

@@ -10,7 +10,7 @@ const texts = [
   "계획하세요",
   "시작하세요", 
   "추억하세요",
-  "함께해요"
+  "함께하세요"
 ];
 
 class Card extends Component {
