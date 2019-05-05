@@ -31,11 +31,11 @@ class Common(Configuration):
         'taggit',  # Tags for the photos
         'taggit_serializer',  # tag
         'imagekit',  # thumbnail
-        
+
         # Your apps
         'GamGam.users',
         'GamGam.travel',
-        
+
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -64,7 +64,7 @@ class Common(Configuration):
     # Postgres
     DATABASES = {
         'default': dj_database_url.config(
-            default='postgres://postgres:@postgres:5432/postgres',
+            default='postgres://postgres:@localhost:5432/gamgam',
             conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
         )
     }
@@ -217,7 +217,6 @@ class Common(Configuration):
     }
     CORS_ORIGIN_ALLOW_ALL = True
     SITE_ID = 1
-
 
     ACCOUNT_AUTHENTICATION_METHOD = 'username'
     ACCOUNT_EMAIL_REQUIRED = True
