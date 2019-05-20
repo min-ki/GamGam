@@ -292,18 +292,41 @@ class MainImageView(APIView):
 
     def delete(self, request, travel_id, format=None):
         pass
+        
+
+API_KEY = "z4gACM%2FayWbDfCPYqKi%2FDzhIir%2B4KK%2BWaimEYcEIZMMqbhmDfySxMbaCACDmtZkDEhXXdm0uTIbSjfRG%2FNE%2BnA%3D%3D"
+
 # 숙박정보, 여행정뷰 받아오기
 class TravelApi(APIView):
 
-    API_KEY = "z4gACM%2FayWbDfCPYqKi%2FDzhIir%2B4KK%2BWaimEYcEIZMMqbhmDfySxMbaCACDmtZkDEhXXdm0uTIbSjfRG%2FNE%2BnA%3D%3D"
-    URL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey="+ API_KEY +"&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
+    URL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey="+ API_KEY +"&numOfRows=100&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
     URL2 = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+ API_KEY +"&areaCode=35&MobileOS=ETC&MobileApp=AppTest&_type=json"
 
+    # 지역코드 검색후
+    # 해당 지역 숙박정보 리스트 받아오기
+    # 해당 지역 관광정보 리스트 받아오기 
+    
+    detail_content = " http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=z4gACM%2FayWbDfCPYqKi%2FDzhIir%2B4KK%2BWaimEYcEIZMMqbhmDfySxMbaCACDmtZkDEhXXdm0uTIbSjfRG%2FNE%2BnA%3D%3D&contentId=2386828&defaultYN=Y&MobileOS=ETC&MobileApp=AppTesting&_type=json"
     # 숙박정보
-    stay_url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=" + API_KEY + "MobileOS=ETC&MobileApp=GamGam&_type=json"
+    stay_url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?ServiceKey=z4gACM%2FayWbDfCPYqKi%2FDzhIir%2B4KK%2BWaimEYcEIZMMqbhmDfySxMbaCACDmtZkDEhXXdm0uTIbSjfRG%2FNE%2BnA%3D%3D&MobileOS=ETC&MobileApp=GamGam&_type=json"
 
-    def get(self, request, format=None):
-        response = requests.get(self.URL2)
+    def get(self, request, travel_id, format=None):
+
+        ## 해당 여행 게시글의 여행지를 받아와 관광정보 추천
+        ## 매 조회시마다 랜덤으로 5개의 값만 추출
+        travel = models.Travel.objects.get(id=travel_id)
+
+        travel_region = travel.korea_travel_region
+
+        # 페이지의 끝을 알아내서 해당 범위에서 하나의 page만 요청보내서 출력
+        # pageNo
+        from random import randint
+        
+        pageNo = randint(1, 300)
+
+        area_based_list = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" + API_KEY + "&areaCode=" + travel_region + "&numOfRows=5" + "&pageNo=" + str(pageNo) + "&MobileOS=ETC&MobileApp=AppTest&_type=json"
+
+        response = requests.get(area_based_list)
         data = json.loads(response.text)
-        print(data)
+        
         return Response(data=data['response']['body'])        

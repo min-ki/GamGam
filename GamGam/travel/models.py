@@ -28,6 +28,27 @@ class Travel(TimeStampedModel):
         ("2", '추억하기'),
     )
 
+    TRAVEL_REGION = (
+        # 지역코드와 지역명 매칭하기
+        ("1", "서울"),
+        ("2", "인천"),
+        ("3", "대전"),
+        ("4", "대구"),
+        ("5", "광주"),
+        ("6", "부산"),
+        ("7", "울산"),
+        ("8", "세종특별자치시"),
+        ("31", "경기도"),
+        ("32", "강원도"),
+        ("33", "충청북도"),
+        ("34", "충청남도"),
+        ("35", "경상북도"),
+        ("36", "경상남도"),
+        ("37", "전라북도"),
+        ("38", "전라남도"),
+        ("39", "제주도"),
+    )
+
     main_image = ProcessedImageField(
         upload_to='uploads/%Y/%m/%d/',
         processors=[ResizeToFill(800, 800)],
@@ -42,6 +63,7 @@ class Travel(TimeStampedModel):
    
 
     travel_region = models.CharField(max_length=30) # 여행 국가
+    korea_travel_region = models.CharField(max_length=2, choices=TRAVEL_REGION, default="0")
     start_at = models.DateField() # 여행 시작일
     end_at = models.DateField()  # 여행 종료일
 

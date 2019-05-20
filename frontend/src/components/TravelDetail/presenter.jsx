@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ImageGallery from "react-image-gallery";
-import styles from './styles.scss';
-import Loading from 'components/Loading';
+import styles from "./styles.scss";
+import Loading from "components/Loading";
 
 const TravelDetail = props => {
   if (props.loading) {
@@ -11,8 +11,8 @@ const TravelDetail = props => {
     return (
       <div>
         <div className="gallery-wrapper">
-          <MyComponent {...props} />
-        </div>
+          <MyComponent {...props} />{" "}
+        </div>{" "}
       </div>
     );
   }
@@ -22,7 +22,12 @@ TravelDetail.propsTypes = {
   loading: PropTypes.bool.isRequired
 };
 
-const LoadingFeed = props => <div><Loading /></div>;
+const LoadingFeed = props => (
+  <div>
+    {" "}
+    <Loading />{" "}
+  </div>
+);
 
 class MyComponent extends Component {
   constructor() {
@@ -43,7 +48,8 @@ class MyComponent extends Component {
       slideInterval: 2000,
       thumbnailPosition: "bottom",
       showVideo: {},
-      gallery_image: JSON.parse(localStorage.getItem('gallery_img'))  || undefined,
+      gallery_image:
+        JSON.parse(localStorage.getItem("gallery_img")) || undefined,
       description: undefined
     };
   }
@@ -70,23 +76,22 @@ class MyComponent extends Component {
   }
 
   componentDidUpdate() {
-
     const {
       travel: { main_image, travel_plan, owner, travel_region, title }
     } = this.props;
 
     let result_img, result_info, merge_result_info;
-    if(travel_plan) {
+    if (travel_plan) {
       result_img = travel_plan.map(plan =>
         plan.plan_images.map(imgs => ({
           src: imgs.file,
           label: imgs.location,
           description: imgs.caption
-        }))); // 세부 계획 이미지들만 뽑아내기
-      }
-      
-    
-    if(travel_plan) {
+        }))
+      ); // 세부 계획 이미지들만 뽑아내기
+    }
+
+    if (travel_plan) {
       result_info = travel_plan.map(plan => ({
         title: plan.title,
         owner: owner.username
@@ -96,12 +101,15 @@ class MyComponent extends Component {
     // 메인이미지 + 세부계획 이미지 리스트
 
     let merge_result_img = [].concat.apply([], result_img); // 세부계획이미지 1차원 배열로 만들기
-    merge_result_img = [{
-      src: main_image,
-      label: travel_region,
-      description: title
-    }, ...merge_result_img]; // 메인이미지 + 세부계획 이미지
-    
+    merge_result_img = [
+      {
+        src: main_image,
+        label: travel_region,
+        description: title
+      },
+      ...merge_result_img
+    ]; // 메인이미지 + 세부계획 이미지
+
     const g_image = merge_result_img.map(img => ({
       original: img.src,
       thumbnail: img.src,
@@ -109,15 +117,16 @@ class MyComponent extends Component {
       description: img.description
     }));
 
-
-    
-    if(result_info){
+    if (result_info) {
       merge_result_info = [].concat.apply([], result_info);
     }
 
-    if(merge_result_info) {
+    if (merge_result_info) {
       merge_result_info = [
-        { title: "메인 이미지", owner: owner.username },
+        {
+          title: "메인 이미지",
+          owner: owner.username
+        },
         ...merge_result_info
       ];
     }
@@ -127,7 +136,7 @@ class MyComponent extends Component {
         gallery_image: g_image,
         description: merge_result_info
       });
-      localStorage.setItem('gallery_img', JSON.stringify(g_image));
+      localStorage.setItem("gallery_img", JSON.stringify(g_image));
     }
   }
 
@@ -140,23 +149,39 @@ class MyComponent extends Component {
       <div>
         <div className="gallery">
           <div className="gallery-image-title-wrapper">
-            <h1 className="gallery-image-title_content gallery-image-title_header">{title}</h1>
-            <h1 className="gallery-image-title_content gallery-image-title_region">{travel_region}</h1>
-            <h1 className="gallery-image-title_content gallery-image-title_date">{start_at} ~ {end_at}</h1>
-          </div>
-          <ImageGallery 
-            ref={i => (this._imageGallery = i)} 
-            items={this.state.gallery_image} 
-            onClick={this._onImageClick.bind(this)} 
-            onScreenChange={this._onScreenChange.bind(this)} 
+            <h1 className="gallery-image-title_content gallery-image-title_header">
+              {" "}
+              {title}{" "}
+            </h1>{" "}
+            <h1 className="gallery-image-title_content gallery-image-title_region">
+              {" "}
+              {travel_region}{" "}
+            </h1>{" "}
+            <h1 className="gallery-image-title_content gallery-image-title_date">
+              {" "}
+              {start_at}~{end_at}{" "}
+            </h1>{" "}
+          </div>{" "}
+          <ImageGallery
+            ref={i => (this._imageGallery = i)}
+            items={this.state.gallery_image}
+            onClick={this._onImageClick.bind(this)}
+            onScreenChange={this._onScreenChange.bind(this)}
             onSlide={this._onSlide.bind(this)}
             showFullscreenButton={false}
-          />
+          />{" "}
         </div>
-
         <div>
-          {travel_plan ? <RenderTravelPlanList travel_plan={travel_plan} /> : null}
-        </div>
+          {" "}
+          {travel_plan ? (
+            <RenderTravelPlanList travel_plan={travel_plan} />
+          ) : null}{" "}
+        </div>{" "}
+        {this.props.items
+          ? this.props.items.item.map(content => {
+              <Test content={content} />;
+            })
+          : 1}
       </div>
     );
   }
@@ -164,21 +189,47 @@ class MyComponent extends Component {
 
 const RenderTravelPlanList = props => (
   <div className="TravelPlanList-container">
-    <h1 className="TravelPlanList-title">세부 여행 </h1>
+    <h1 className="TravelPlanList-title"> 세부 여행 </h1>{" "}
     {props.travel_plan.map(plan => (
       <div className="TravelPlanList-wrapper">
         <div className="TravelPlanList-content_left">
-          <h1 className="TravelPlanList-content TravelPlanList-content__title">{plan.title}</h1>
-          <h1 className="TravelPlanList-content TravelPlanList-content__content">{plan.content}</h1>
-          <h1 className="TravelPlanList-content TravelPlanList-content__price">비용 : {plan.price}원</h1>
-          <h1 className="TravelPlanList-content TravelPlanList-content__date">일자 : {plan.travel_day}</h1>
-        </div>
+          <h1 className="TravelPlanList-content TravelPlanList-content__title">
+            {" "}
+            {plan.title}{" "}
+          </h1>{" "}
+          <h1 className="TravelPlanList-content TravelPlanList-content__content">
+            {" "}
+            {plan.content}{" "}
+          </h1>{" "}
+          <h1 className="TravelPlanList-content TravelPlanList-content__price">
+            {" "}
+            비용: {plan.price}원{" "}
+          </h1>{" "}
+          <h1 className="TravelPlanList-content TravelPlanList-content__date">
+            {" "}
+            일자: {plan.travel_day}{" "}
+          </h1>{" "}
+        </div>{" "}
         <div className="TravelPlanList-content_right">
-          <img src={plan.plan_images[0] ? plan.plan_images[0].file : require("images/2-(400x400).jpg")} alt="temp" width="400" height="398"/>
-        </div>
+          <img
+            src={
+              plan.plan_images[0]
+                ? plan.plan_images[0].file
+                : require("images/2-(400x400).jpg")
+            }
+            alt="temp"
+            width="400"
+            height="398"
+          />
+        </div>{" "}
       </div>
-    ))}
+    ))}{" "}
   </div>
 );
 
+const Test = props => (
+  <div>
+    <p>{props.addr1}</p>
+  </div>
+);
 export default TravelDetail;

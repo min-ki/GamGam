@@ -17,5 +17,5 @@ urlpatterns = [
     # Travel Plan
     path('<int:pk>/plan/', views.TravelPlanListView.as_view(), name='plan'),
     path('<int:pk>/plan/<int:plan_pk>/', views.TravelPlanDetailView.as_view(), name='plan'),
-    path('api/', views.TravelApi.as_view(), name='api'),
+    path('api/<int:travel_id>/', views.TravelApi.as_view(), name='api'),
 ]
