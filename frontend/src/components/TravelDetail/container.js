@@ -22,7 +22,12 @@ class Container extends Component {
         } = this.props;
         if (!this.props.travel) {
             getTravelDetail(TravelId);
-            fetch(`/travel/api/${TravelId}/`)
+            fetch(`/travel/api/${TravelId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `JWT ${localStorage.getItem('jwt')}`
+                    },
+                })
                 .then(function (response) {
                     return response.json();
                 })
@@ -33,14 +38,25 @@ class Container extends Component {
         } else if (!this.props.travel.id !== TravelId) {
             localStorage.removeItem('gallery_img'); // 새로고침시 이미지 사라지는 문제 해결
             getTravelDetail(TravelId);
+            fetch(`/travel/api/${TravelId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `JWT ${localStorage.getItem('jwt')}`
+                    }, // 이 부분은 따로 설정하고싶은 header가 있다면 넣으세요
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(json => this.setState({
+                    items: json.items
+                }));
+
+            console.log(this.state);
         } else {
             this.setState({
                 loading: false,
             });
         }
-
-        console.log(this.state);
-
     }
 
     componentWillReceiveProps = nextProps => {
@@ -52,6 +68,8 @@ class Container extends Component {
     }
 
     render() {
+        console.log(this.state);
+
         const {
             travel
         } = this.props;

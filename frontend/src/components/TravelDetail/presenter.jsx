@@ -142,9 +142,11 @@ class MyComponent extends Component {
 
   render() {
     const {
-      travel: { travel_plan, travel_region, title, start_at, end_at }
+      travel: { travel_plan, travel_region, title, start_at, end_at },
+      items
     } = this.props;
 
+    console.log("presenter props: ", this.props);
     return (
       <div>
         <div className="gallery">
@@ -177,11 +179,14 @@ class MyComponent extends Component {
             <RenderTravelPlanList travel_plan={travel_plan} />
           ) : null}{" "}
         </div>{" "}
-        {this.props.items
-          ? this.props.items.item.map(content => {
-              <Test content={content} />;
-            })
-          : 1}
+        <h1 className="tour-title"> 주변 볼거리 </h1>{" "}
+        <div className="tour-container">
+          {items
+            ? items.item
+                .filter(info => info.firstimage) // 이미지가 없다면 필터링
+                .map(info => <TourList {...info} />)
+            : null}
+        </div>
       </div>
     );
   }
@@ -205,6 +210,9 @@ const RenderTravelPlanList = props => (
             {" "}
             비용: {plan.price}원{" "}
           </h1>{" "}
+          <h1 className="TravelPlanList-content TravelPlanList-content__price">
+            교통수단 : {plan.Transportation}
+          </h1>
           <h1 className="TravelPlanList-content TravelPlanList-content__date">
             {" "}
             일자: {plan.travel_day}{" "}
@@ -227,9 +235,17 @@ const RenderTravelPlanList = props => (
   </div>
 );
 
-const Test = props => (
-  <div>
-    <p>{props.addr1}</p>
+const TourList = props => (
+  <div className="tour-item">
+    <h1 className="tour-item__title">제목 : {props.title} </h1>
+    <h2 className="tour-item__position">위치 : {props.addr1}</h2>
+    <img
+      className="tour-item__image"
+      width="300"
+      height="300"
+      src={props.firstimage}
+    />
   </div>
 );
+
 export default TravelDetail;
